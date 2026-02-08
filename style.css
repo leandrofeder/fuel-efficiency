@@ -1,0 +1,487 @@
+/* ========================================
+   PLANNER SEMANAL SAUDÁVEL - ESTILOS
+   Mobile-first, responsivo e otimizado
+   ======================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+
+/* ========================================
+   1. VARIÁVEIS CSS
+   ======================================== */
+
+:root {
+    --primary: #667eea;
+    --primary-dark: #764ba2;
+    --primary-light: #f7fafc;
+    --danger: #d63031;
+    --success: #43e97b;
+    --warning: #fdcb6e;
+    --info: #4facfe;
+    --text-dark: #2d3748;
+    --text-light: #718096;
+    --text-muted: #4a5568;
+    --border-light: #e2e8f0;
+    --shadow-sm: 0 3px 6px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 10px 25px rgba(102, 126, 234, 0.4);
+    --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.3);
+    --radius-sm: 8px;
+    --radius-md: 15px;
+    --radius-lg: 20px;
+    --radius-full: 50px;
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 15px;
+    --spacing-lg: 20px;
+    --spacing-xl: 30px;
+    --spacing-2xl: 40px;
+    --transition: all 0.3s ease;
+}
+
+
+/* ========================================
+   2. RESET E BASE
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: var(--text-dark);
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+
+/* ========================================
+   3. LAYOUT PRINCIPAL
+   ======================================== */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-lg);
+}
+
+.page {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-2xl);
+    margin-bottom: var(--spacing-xl);
+    box-shadow: var(--shadow-lg);
+    animation: slideIn 0.4s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ========================================
+   4. CABEÇALHO
+   ======================================== */
+
+.header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 3px solid var(--primary-light);
+}
+
+.header h1 {
+    font-size: clamp(1.25rem, 4vw, 1.75rem);
+    color: var(--primary);
+    margin-bottom: var(--spacing-xs);
+    font-weight: 700;
+}
+
+.header p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+
+/* ========================================
+   5. BOTÕES
+   ======================================== */
+
+.print-btn {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    border: none;
+    border-radius: var(--radius-full);
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow-md);
+    margin: var(--spacing-xl) auto;
+    display: block;
+    position: sticky;
+    top: var(--spacing-lg);
+    z-index: 100;
+}
+
+.print-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.5);
+}
+
+.print-btn:active {
+    transform: translateY(-1px);
+}
+
+.swap-btn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 1.05rem;
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    transition: background 0.15s ease;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.swap-btn:hover {
+    background: rgba(102, 126, 234, 0.08);
+}
+
+.swap-btn:active {
+    background: rgba(102, 126, 234, 0.12);
+}
+
+
+/* ========================================
+   6. SEÇÃO DE PROTEÍNAS
+   ======================================== */
+
+.prep-section {
+    background: linear-gradient(135deg, #ffeaa7 0%, var(--warning) 100%);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.prep-section h3 {
+    color: var(--danger);
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-sm);
+    font-weight: 700;
+}
+
+.prep-section strong {
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+
+/* ========================================
+   7. GRID DE REFEIÇÕES
+   ======================================== */
+
+.meals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.meal-section {
+    background: var(--primary-light);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.meal-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+    text-align: center;
+    color: white;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-sm);
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.breakfast-title {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.lunch-title {
+    background: linear-gradient(135deg, var(--info) 0%, #00f2fe 100%);
+}
+
+.snack-title {
+    background: linear-gradient(135deg, var(--success) 0%, #38f9d7 100%);
+}
+
+
+/* ========================================
+   8. CARDS DE REFEIÇÃO
+   ======================================== */
+
+.day-card {
+    background: white;
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--spacing-sm);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-sm);
+    transition: var(--transition);
+}
+
+.day-card:hover {
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+}
+
+.day-name {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    min-width: 60px;
+    flex-shrink: 0;
+}
+
+.day-meal {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    flex: 1;
+    line-height: 1.4;
+}
+
+
+/* ========================================
+   9. LISTA DE COMPRAS
+   ======================================== */
+
+.shopping-section h2 {
+    color: var(--primary);
+    font-size: clamp(1.25rem, 4vw, 1.75rem);
+    margin-bottom: var(--spacing-xl);
+    text-align: center;
+}
+
+.shopping-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.category-card {
+    background: linear-gradient(135deg, var(--primary-light) 0%, #edf2f7 100%);
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-md);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: var(--transition);
+}
+
+.category-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.category-header {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 3px solid var(--primary);
+    color: var(--text-dark);
+}
+
+.item-list {
+    list-style: none;
+}
+
+.item-list li {
+    padding: var(--spacing-xs) 0;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border-light);
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.item-list li:last-child {
+    border-bottom: none;
+}
+
+.item-name {
+    font-weight: 500;
+    flex: 1;
+}
+
+.item-qty {
+    color: var(--primary);
+    font-weight: 700;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+
+/* ========================================
+   10. MEDIA QUERIES - TABLET E DESKTOP
+   ======================================== */
+
+@media (max-width: 1024px) {
+    .container {
+        padding: var(--spacing-md);
+    }
+    .page {
+        padding: var(--spacing-xl);
+    }
+    .meals-grid,
+    .shopping-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* ========================================
+   11. MEDIA QUERIES - MOBILE
+   ======================================== */
+
+@media (max-width: 640px) {
+     :root {
+        --spacing-lg: 12px;
+        --spacing-2xl: 20px;
+    }
+    .container {
+        padding: var(--spacing-md);
+    }
+    .page {
+        border-radius: var(--radius-md);
+        padding: var(--spacing-lg);
+        margin-bottom: var(--spacing-lg);
+    }
+    .header {
+        margin-bottom: var(--spacing-lg);
+        padding-bottom: var(--spacing-sm);
+    }
+    .header h1 {
+        font-size: 1.25rem;
+    }
+    .header p {
+        font-size: 0.85rem;
+    }
+    .print-btn {
+        position: static;
+        padding: 12px 20px;
+        font-size: 0.9rem;
+        margin: var(--spacing-lg) 0;
+        width: 100%;
+    }
+    .meals-grid,
+    .shopping-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    .prep-section {
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-lg);
+    }
+    .prep-section h3 {
+        font-size: 1rem;
+    }
+    .meal-section {
+        padding: var(--spacing-sm);
+    }
+    .meal-title {
+        font-size: 1rem;
+        padding: var(--spacing-xs) var(--spacing-sm);
+        min-height: 36px;
+    }
+    .day-card {
+        flex-wrap: wrap;
+        padding: var(--spacing-xs);
+    }
+    .day-name {
+        min-width: 50px;
+        font-size: 0.8rem;
+    }
+    .day-meal {
+        font-size: 0.8rem;
+        flex-basis: 100%;
+        margin-left: 50px;
+        margin-top: calc(var(--spacing-xs) * -1);
+    }
+    .swap-btn {
+        position: absolute;
+        right: var(--spacing-md);
+        padding: var(--spacing-xs) var(--spacing-xs);
+        font-size: 1rem;
+    }
+    .shopping-section h2 {
+        font-size: 1.25rem;
+    }
+    .category-card {
+        padding: var(--spacing-md);
+    }
+    .category-header {
+        font-size: 0.9rem;
+    }
+    .item-list li {
+        font-size: 0.8rem;
+        padding: var(--spacing-xs) 0;
+    }
+}
+
+
+/* ========================================
+   12. PRINT STYLES
+   ======================================== */
+
+@media print {
+    body {
+        background: white;
+    }
+    .print-btn {
+        display: none;
+    }
+    .page {
+        box-shadow: none;
+        border-radius: 0;
+        page-break-inside: avoid;
+        page-break-after: always;
+        padding: 0;
+        margin: 0;
+    }
+    .container {
+        max-width: 100%;
+        padding: 0;
+    }
+    .header {
+        page-break-after: avoid;
+    }
+    @page {
+        margin: 1cm;
+    }
+}

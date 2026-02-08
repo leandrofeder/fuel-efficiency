@@ -1,418 +1,374 @@
-// Translations Object
-const translations = {
-    pt: {
-        'nav.about': 'Sobre',
-        'nav.experience': 'Experiência',
-        'nav.skills': 'Habilidades',
-        'nav.contact': 'Contato',
-        'hero.greeting': 'Olá! Sou Leandro Feder',
-        'hero.subtitle': 'Desenvolvedor de Software Sênior',
-        'hero.description': 'Especialista em desenvolvimento backend e integração de sistemas com mais de 5 anos de experiência. Apaixonado por criar soluções robustas, escaláveis e de alta qualidade.',
-        'hero.contact': 'Entre em contato',
-        'hero.experience': 'Veja minha experiência',
-        'about.title': 'Sobre mim',
-        'about.paragraph1': 'Sou um desenvolvedor de software sênior com formação em Engenharia Elétrica pela UNIASSELVI. Minha jornada começou com eletrônica industrial e evoluiu para desenvolvimento de software de alta complexidade.',
-        'about.paragraph2': 'Atualmente atuo como Product Owner e Technical Lead em sistemas de qualidade, onde coordeno desenvolvimento de soluções complexas, integração de sistemas e otimização de processos.',
-        'about.paragraph3': 'Sou defensor de código limpo, testes automatizados e boas práticas de engenharia de software. Gosto de trabalhar em equipes colaborativas e sempre busco aprender novas tecnologias.',
-        'about.languages': '🌍 Idiomas',
-        'about.portuguese': 'Português (Brasil)',
-        'about.english': 'Inglês',
-        'about.fluent': 'Fluente',
-        'about.intermediate': 'Intermediário',
-        'about.yearsExperience': 'Anos de experiência',
-        'about.projectsCompleted': 'Projetos concluídos',
-        'about.languages': 'Linguagens',
-        'about.formation': 'Formação',
-        'about.formationDetail': 'Engenharia Elétrica',
-        'experience.title': 'Experiência profissional',
-        'experience.weg.role': 'Senior Software Developer',
-        'experience.weg.period': 'jun 2023 - Presente • 2 anos 9 meses',
-        'experience.weg.location': '📍 Presencial - Blumenau, Santa Catarina',
-        'experience.weg.title': 'Product Owner e Technical Lead do time de sistemas de qualidade',
-        'experience.weg.resp1': 'Desenvolvimento e suporte de sistemas para testes de transformadores',
-        'experience.weg.resp2': 'Integração entre sistemas de laboratório e corporativos',
-        'experience.weg.resp3': 'Comunicação entre sistemas de testes e equipamentos de medição',
-        'experience.weg.resp4': 'Desenvolvimento em Java, JavaScript e LabVIEW',
-        'experience.weg.resp5': 'Gestão e otimização de desempenho de banco de dados PostgreSQL',
-        'experience.weg.resp6': 'Automação de sistemas para aumentar eficiência e confiabilidade',
-        'experience.zenvia.role': 'Operations Developer',
-        'experience.zenvia.period': 'abr 2022 - jun 2023 • 1 ano 3 meses',
-        'experience.zenvia.location': '🌐 Remoto',
-        'experience.zenvia.resp1': 'Desenvolvimento de assistentes virtuais (chatbots)',
-        'experience.zenvia.resp2': 'Desenvolvimento de APIs REST',
-        'experience.zenvia.resp3': 'Testes unitários de APIs com Jest.js',
-        'experience.hdj.role': 'Montador eletro-eletrônico',
-        'experience.hdj.period': 'out 2013 - set 2021 • 8 anos',
-        'experience.hdj.location': '📍 Presencial - Blumenau, Santa Catarina',
-        'experience.hdj.resp1': 'Montagem e manutenção de placas eletrônicas',
-        'experience.hdj.resp2': 'Soldagem de componentes eletrônicos',
-        'skills.title': 'Habilidades técnicas',
-        'skills.backend': 'Backend',
-        'skills.frontend': 'Frontend',
-        'skills.database': 'Banco de dados',
-        'skills.tools': 'Ferramentas & DevOps',
-        'skills.testing': 'Testing & QA',
-        'skills.specialized': 'Especializado',
-        'contact.title': 'Vamos conversar?',
-        'contact.subtitle': 'Estou aberto a novas oportunidades, projetos interessantes e colaborações. Entre em contato via LinkedIn ou GitHub.',
-        'contact.linkedin': 'LinkedIn',
-        'contact.github': 'GitHub',
-        'contact.email': 'Email',
-        'contact.note': 'Atualize os links acima com seus perfis reais',
-        'footer.copyright': '© 2026 Leandro Feder. Todos os direitos reservados.'
+/* ====================================================================
+   PLANNER SEMANAL SAUDÁVEL - LÓGICA
+   
+   Módulos:
+   - CONFIG: dados e configurações
+   - UTILS: funções utilitárias
+   - STATE: gerenciar estado
+   - UI: interação com DOM
+   - INIT: inicialização
+   ==================================================================== */
+
+/* ========================================
+   1. CONFIGURAÇÃO
+   ======================================== */
+const CONFIG = {
+    breakfastOptions: [
+        { name: "Ovos mexidos (2 un.) + Pão integral (1 fatia)", ingredients: ["Ovos", "Pão integral", "Azeite"], proteins: ["ovo"] },
+        { name: "Iogurte natural (1 pote) + Aveia (2 col. sopa) + Banana", ingredients: ["Iogurte natural", "Aveia", "Banana"], proteins: ["laticinio"] },
+        { name: "Crepioca (2 col. sopa) + Queijo branco (1 fatia)", ingredients: ["Goma de tapioca", "Ovos", "Queijo branco"], proteins: ["ovo", "laticinio"] },
+        { name: "Vitamina de Leite (1 copo) + Mamão + Aveia", ingredients: ["Leite", "Mamão", "Aveia"], proteins: ["laticinio"] },
+        { name: "Cuscuz de milho (pequeno) + Ovo (1 un.)", ingredients: ["Farinha de milho", "Ovo"], proteins: ["ovo"] },
+        { name: "Pão integral + Pasta de amendoim + Café", ingredients: ["Pão integral", "Pasta de amendoim", "Café"], proteins: ["vegetariano"] },
+        { name: "Tapioca (2 col. sopa) + Queijo minas + Orégano", ingredients: ["Goma de tapioca", "Queijo minas"], proteins: ["laticinio"] },
+        { name: "Mingau de aveia (3 col. sopa) + Canela", ingredients: ["Aveia", "Leite", "Canela"], proteins: ["laticinio"] },
+        { name: "Salada de frutas + Iogurte natural", ingredients: ["Frutas variadas", "Iogurte natural"], proteins: ["laticinio"] },
+        { name: "Torrada integral + Abacate + Limão", ingredients: ["Pão integral", "Abacate", "Limão"], proteins: ["vegetariano"] },
+        { name: "Ovos cozidos (2 un.) + Tomate + Orégano", ingredients: ["Ovos", "Tomate", "Orégano"], proteins: ["ovo"] },
+        { name: "Iogurte + Granola + Morango", ingredients: ["Iogurte natural", "Granola", "Morango"], proteins: ["laticinio"] },
+        { name: "Tapioca + Ovo mexido + Queijo minas", ingredients: ["Goma de tapioca", "Ovos", "Queijo minas"], proteins: ["ovo", "laticinio"] },
+        { name: "Vitamina de Leite + Banana + Sementes", ingredients: ["Leite", "Banana", "Pasta de amendoim"], proteins: ["laticinio", "vegetariano"] },
+        { name: "Pão integral + Queijo branco + Café", ingredients: ["Pão integral", "Queijo branco", "Café"], proteins: ["laticinio"] },
+        { name: "Mingau de aveia + Banana", ingredients: ["Aveia", "Leite", "Banana"], proteins: ["laticinio"] },
+        { name: "Crepioca + Peito de peru (2 fatias)", ingredients: ["Goma de tapioca", "Ovos", "Peito de peru"], proteins: ["ovo", "frango"] },
+        { name: "Ovos mexidos + Queijo cottage + Cenoura", ingredients: ["Ovos", "Queijo cottage", "Cenoura"], proteins: ["ovo", "laticinio"] },
+        { name: "Iogurte + Sementes de chia + Pera", ingredients: ["Iogurte natural", "Sementes de chia", "Pera"], proteins: ["laticinio", "vegetariano"] },
+        { name: "Pão integral + Ricota + Manjericão", ingredients: ["Pão integral", "Ricota", "Manjericão"], proteins: ["laticinio"] },
+        { name: "Cuscuz de milho + Queijo branco + Azeite", ingredients: ["Farinha de milho", "Queijo branco", "Azeite"], proteins: ["laticinio"] }
+    ],
+
+    lunchOptions: [
+        { name: "Frango grelhado + Arroz integral + Feijão + Salada", ingredients: ["Frango", "Arroz integral", "Feijão", "Alface", "Tomate"], proteins: ["frango"] },
+        { name: "Carne moída refogada + Batata cozida + Brócolis", ingredients: ["Carne bovina magra", "Batata", "Brócolis"], proteins: ["bovina"] },
+        { name: "Omelete (2 ovos) com Legumes + Arroz", ingredients: ["Ovos", "Tomate", "Arroz"], proteins: ["ovo"] },
+        { name: "Frango desfiado + Macarrão integral + Azeite", ingredients: ["Frango desfiado", "Macarrão integral", "Azeite"], proteins: ["frango"] },
+        { name: "Lentilha + Arroz + Couve refogada", ingredients: ["Lentilha", "Arroz", "Couve"], proteins: ["vegetariano"] },
+        { name: "Bife de porco magro + Purê de abóbora + Salada", ingredients: ["Carne suína magra", "Abóbora", "Pepino"], proteins: ["porco"] },
+        { name: "Frango desfiado + Batata doce cozida + Cenoura", ingredients: ["Frango", "Batata-doce", "Cenoura"], proteins: ["frango"] },
+        { name: "Quinoa + Grão-de-bico + Pimentão e Cebola", ingredients: ["Quinoa", "Grão-de-bico", "Pimentão", "Cebola"], proteins: ["vegetariano"] },
+        { name: "Peixe (Tilápia) assado + Arroz + Legumes", ingredients: ["Tilápia", "Arroz", "Brócolis", "Cenoura"], proteins: ["peixe"] },
+        { name: "Sanduíche natural com Queijo cottage + Peito de peru", ingredients: ["Pão integral", "Queijo cottage", "Peito de peru", "Alface"], proteins: ["laticinio", "frango"] },
+        { name: "Frango desfiado + Arroz + Feijão + Cenoura", ingredients: ["Frango", "Arroz", "Feijão", "Cenoura"], proteins: ["frango"] },
+        { name: "Carne moída + Macarrão integral + Molho de tomate", ingredients: ["Carne bovina magra", "Macarrão integral", "Molho de tomate"], proteins: ["bovina"] },
+        { name: "Omelete + Queijo branco + Batata doce cozida", ingredients: ["Ovos", "Queijo branco", "Batata-doce"], proteins: ["ovo", "laticinio"] },
+        { name: "Ovo cozido picado + Salada mista + Azeite", ingredients: ["Ovo", "Alface", "Tomate", "Pepino", "Azeite", "Limão"], proteins: ["ovo"] },
+        { name: "Lentilha + Quinoa cozida + Brócolis no vapor", ingredients: ["Lentilha", "Quinoa", "Brócolis"], proteins: ["vegetariano"] },
+        { name: "Bife de frango grelhado + Purê de batata + Couve", ingredients: ["Frango", "Batata", "Couve"], proteins: ["frango"] },
+        { name: "Carne bovina + Arroz integral + Feijão + Abóbora", ingredients: ["Carne bovina magra", "Arroz integral", "Feijão", "Abóbora"], proteins: ["bovina"] },
+        { name: "Peixe (Tilápia) cozido + Batata cozida + Legumes", ingredients: ["Tilápia", "Batata", "Cenoura", "Brócolis"], proteins: ["peixe"] },
+        { name: "Frango desfiado + Pão integral + Queijo cottage", ingredients: ["Frango", "Pão integral", "Queijo cottage", "Alface"], proteins: ["frango", "laticinio"] },
+        { name: "Grão-de-bico + Arroz + Tomate cebola refogados", ingredients: ["Grão-de-bico", "Arroz", "Tomate", "Cebola"], proteins: ["vegetariano"] }
+    ],
+
+    snackOptions: [
+        { name: "Fruta (Maçã/Pera) + Castanhas (5 un.)", ingredients: ["Maçã", "Castanhas"], proteins: ["vegetariano"] },
+        { name: "Iogurte natural (1 pote) + Linhaça", ingredients: ["Iogurte natural", "Sementes variadas"], proteins: ["laticinio"] },
+        { name: "Ovo cozido (1 un.) + Sal", ingredients: ["Ovo"], proteins: ["ovo"] },
+        { name: "Queijo minas/branco + Tomate + Orégano", ingredients: ["Queijo minas", "Tomate", "Orégano"], proteins: ["laticinio"] },
+        { name: "Pão integral + Ricota amassada", ingredients: ["Pão integral", "Ricota"], proteins: ["laticinio"] },
+        { name: "Cenoura/Pepino + Homus", ingredients: ["Cenoura", "Homus"], proteins: ["vegetariano"] },
+        { name: "Banana (1 un.) + Pasta de amendoim", ingredients: ["Banana", "Pasta de amendoim"], proteins: ["vegetariano"] },
+        { name: "Vitamina: Leite vegetal + Fruta", ingredients: ["Leite vegetal", "Banana"], proteins: ["vegetariano"] },
+        { name: "Wrap integral + Frango desfiado", ingredients: ["Wrap integral", "Frango desfiado"], proteins: ["frango"] },
+        { name: "Pudim de chia + Leite de coco", ingredients: ["Sementes de chia", "Leite de coco"], proteins: ["vegetariano"] },
+        { name: "Pão integral + Ovo cozido + Café", ingredients: ["Pão integral", "Ovo", "Café"], proteins: ["ovo"] },
+        { name: "Iogurte + Aveia + Mel", ingredients: ["Iogurte natural", "Aveia", "Mel"], proteins: ["laticinio"] },
+        { name: "Banana (1 un.) + Queijo minas", ingredients: ["Banana", "Queijo minas"], proteins: ["laticinio"] },
+        { name: "Ricota + Tomate + Orégano", ingredients: ["Ricota", "Tomate", "Orégano"], proteins: ["laticinio"] },
+        { name: "Pepino + Queijo cottage", ingredients: ["Pepino", "Queijo cottage"], proteins: ["laticinio"] },
+        { name: "Wrap integral + Queijo branco", ingredients: ["Wrap integral", "Queijo branco"], proteins: ["laticinio"] },
+        { name: "Vitamina: Leite + Morango", ingredients: ["Leite", "Morango"], proteins: ["laticinio"] },
+        { name: "Ovo mexido + Pão integral", ingredients: ["Ovo", "Pão integral"], proteins: ["ovo"] },
+        { name: "Iogurte + Castanhas", ingredients: ["Iogurte natural", "Castanhas"], proteins: ["laticinio", "vegetariano"] },
+        { name: "Pão integral + Peito de peru", ingredients: ["Pão integral", "Peito de peru"], proteins: ["frango"] }
+    ],
+
+    categoryKeywords: {
+        proteinas: ["frango", "carne", "ovo", "peixe", "queijo", "iogurte", "ricota", "peito de peru", "cottage"],
+        graos: ["pão", "tapioca", "arroz", "feijão", "lentilha", "grão-de-bico", "aveia", "macarrão", "quinoa"],
+        legumes: ["brócolis", "couve", "alface", "cenoura", "abóbora", "batata-doce", "batata", "tomate", "pepino", "pimentão"],
+        frutas: ["banana", "maçã", "limão", "mamão", "abacate", "frutas variadas", "morango", "pera"],
+        temperos: ["azeite", "sal", "orégano", "canela", "cebola", "alho"],
+        outros: ["leite", "café", "pasta de amendoim", "castanhas", "sementes", "homus", "wrap integral", "leite vegetal", "leite de coco"]
     },
-    en: {
-        'nav.about': 'About',
-        'nav.experience': 'Experience',
-        'nav.skills': 'Skills',
-        'nav.contact': 'Contact',
-        'hero.greeting': 'Hello! I\'m Leandro Feder',
-        'hero.subtitle': 'Senior Software Developer',
-        'hero.description': 'Backend development specialist and systems integration expert with over 5 years of experience. Passionate about creating robust, scalable, and high-quality solutions.',
-        'hero.contact': 'Get in touch',
-        'hero.experience': 'See my experience',
-        'about.title': 'About me',
-        'about.paragraph1': 'I\'m a senior software developer with a degree in Electrical engineering from UNIASSELVI. My journey started with industrial electronics and evolved into high-complexity software development.',
-        'about.paragraph2': 'Currently, I work as a Product Owner and Technical Lead in quality systems, coordinating the development of complex solutions, systems integration, and process optimization.',
-        'about.paragraph3': 'I\'m an advocate for clean code, automated testing, and software engineering best practices. I enjoy working in collaborative teams and always seek to learn new technologies.',
-        'about.languages': '🌍 Languages',
-        'about.portuguese': 'Portuguese (Brazil)',
-        'about.english': 'English',
-        'about.fluent': 'Fluent',
-        'about.intermediate': 'Intermediate',
-        'about.yearsExperience': 'Years of Experience',
-        'about.projectsCompleted': 'Projects Completed',
-        'about.formation': 'Education',
-        'about.formationDetail': 'Electrical engineering',
-        'about.languages': 'Languages',
-        'experience.title': 'Professional Experience',
-        'experience.weg.role': 'Senior Software Developer',
-        'experience.weg.period': 'Jun 2023 - Present • 2 years 9 months',
-        'experience.weg.location': '📍 On-Site - Blumenau, Santa Catarina',
-        'experience.weg.title': 'Product Owner and Technical Lead of Quality Systems Team',
-        'experience.weg.resp1': 'Development and support of systems for transformer testing',
-        'experience.weg.resp2': 'Integration between laboratory and corporate systems',
-        'experience.weg.resp3': 'Communication between test systems and measurement equipment',
-        'experience.weg.resp4': 'Development in Java, JavaScript, and LabVIEW',
-        'experience.weg.resp5': 'Management and optimization of PostgreSQL database performance',
-        'experience.weg.resp6': 'Systems automation to increase efficiency and reliability',
-        'experience.zenvia.role': 'Operations Developer',
-        'experience.zenvia.period': 'Apr 2022 - Jun 2023 • 1 year 3 months',
-        'experience.zenvia.location': '🌐 Remote',
-        'experience.zenvia.resp1': 'Development of virtual assistants (chatbots)',
-        'experience.zenvia.resp2': 'Development of REST APIs',
-        'experience.zenvia.resp3': 'Unit testing of APIs with Jest.js',
-        'experience.hdj.role': 'Electronics Fitter',
-        'experience.hdj.period': 'Oct 2013 - Sep 2021 • 8 years',
-        'experience.hdj.location': '📍 On-Site - Blumenau, Santa Catarina',
-        'experience.hdj.resp1': 'Assembly and maintenance of electronic boards',
-        'experience.hdj.resp2': 'Soldering of electronic components',
-        'skills.title': 'Technical Skills',
-        'skills.backend': 'Backend',
-        'skills.frontend': 'Frontend',
-        'skills.database': 'Database',
-        'skills.tools': 'Tools & DevOps',
-        'skills.testing': 'Testing & QA',
-        'skills.specialized': 'Specialized',
-        'contact.title': 'Let\'s talk?',
-        'contact.subtitle': 'I\'m open to new opportunities, interesting projects, and collaborations. Get in touch via LinkedIn or GitHub.',
-        'contact.linkedin': 'LinkedIn',
-        'contact.github': 'GitHub',
-        'contact.email': 'Email',
-        'contact.note': 'Update the links above with your actual profiles',
-        'footer.copyright': '© 2026 Leandro Feder. All rights reserved.'
-    },
-    es: {
-        'nav.about': 'Acerca de',
-        'nav.experience': 'Experiencia',
-        'nav.skills': 'Habilidades',
-        'nav.contact': 'Contacto',
-        'hero.greeting': '¡Hola! Soy Leandro Feder',
-        'hero.subtitle': 'Desarrollador de Software Senior',
-        'hero.description': 'Especialista en desarrollo backend e integración de sistemas con más de 5 años de experiencia. Apasionado por crear soluciones robustas, escalables y de alta calidad.',
-        'hero.contact': 'Ponte en contacto',
-        'hero.experience': 'Ver mi experiencia',
-        'about.title': 'Acerca de mí',
-        'about.paragraph1': 'Soy un desarrollador de software senior con formación en Ingeniería eléctrica por UNIASSELVI. Mi carrera comenzó con electrónica industrial y evolucionó hacia el desarrollo de software de alta complejidad.',
-        'about.paragraph2': 'Actualmente trabajo como Product Owner y Technical Lead en sistemas de calidad, coordinando el desarrollo de soluciones complejas, integración de sistemas y optimización de procesos.',
-        'about.paragraph3': 'Soy defensor del código limpio, pruebas automatizadas y mejores prácticas de ingeniería de software. Me gusta trabajar en equipos colaborativos y siempre busco aprender nuevas tecnologías.',
-        'about.languages': '🌍 Idiomas',
-        'about.portuguese': 'Portugués (Brasil)',
-        'about.english': 'Inglés',
-        'about.fluent': 'Fluido',
-        'about.intermediate': 'Intermedio',
-        'about.yearsExperience': 'Años de Experiencia',
-        'about.formation': 'Formación',
-        'about.formationDetail': 'Ingeniería eléctrica',
-        'about.projectsCompleted': 'Proyectos Completados',
-        'about.languages': 'Lenguajes',
-        'experience.title': 'Experiencia Profesional',
-        'experience.weg.role': 'Desarrollador de Software Senior',
-        'experience.weg.period': 'jun 2023 - Presente • 2 años 9 meses',
-        'experience.weg.location': '📍 Presencial - Blumenau, Santa Catarina',
-        'experience.weg.title': 'Product Owner y Technical Lead del Equipo de Sistemas de Calidad',
-        'experience.weg.resp1': 'Desarrollo y soporte de sistemas para pruebas de transformadores',
-        'experience.weg.resp2': 'Integración entre sistemas de laboratorio y corporativos',
-        'experience.weg.resp3': 'Comunicación entre sistemas de prueba y equipos de medición',
-        'experience.weg.resp4': 'Desarrollo en Java, JavaScript y LabVIEW',
-        'experience.weg.resp5': 'Gestión y optimización del desempeño de la base de datos PostgreSQL',
-        'experience.weg.resp6': 'Automatización de sistemas para aumentar eficiencia y confiabilidad',
-        'experience.zenvia.role': 'Desarrollador de Operaciones',
-        'experience.zenvia.period': 'abr 2022 - jun 2023 • 1 año 3 meses',
-        'experience.zenvia.location': '🌐 Remoto',
-        'experience.zenvia.resp1': 'Desarrollo de asistentes virtuales (chatbots)',
-        'experience.zenvia.resp2': 'Desarrollo de APIs REST',
-        'experience.zenvia.resp3': 'Pruebas unitarias de APIs con Jest.js',
-        'experience.hdj.role': 'Montador electrónico',
-        'experience.hdj.period': 'oct 2013 - sep 2021 • 8 años',
-        'experience.hdj.location': '📍 Presencial - Blumenau, Santa Catarina',
-        'experience.hdj.resp1': 'Montaje y mantenimiento de placas electrónicas',
-        'experience.hdj.resp2': 'Soldadura de componentes electrónicos',
-        'skills.title': 'Habilidades técnicas',
-        'skills.backend': 'Backend',
-        'skills.frontend': 'Frontend',
-        'skills.database': 'Base de datos',
-        'skills.tools': 'Herramientas y DevOps',
-        'skills.testing': 'Pruebas y QA',
-        'skills.specialized': 'Especializado',
-        'contact.title': '¿Hablamos?',
-        'contact.subtitle': 'Estoy abierto a nuevas oportunidades, proyectos interesantes y colaboraciones. Ponte en contacto a través de LinkedIn o GitHub.',
-        'contact.linkedin': 'LinkedIn',
-        'contact.github': 'GitHub',
-        'contact.email': 'Correo Electrónico',
-        'contact.note': 'Actualiza los enlaces anteriores con tus perfiles reales',
-        'footer.copyright': '© 2026 Leandro Feder. Todos los derechos reservados.'
+
+    defaultUnitByIngredient: {
+        "Frango": { qty: 1, unit: "kg" },
+        "Carne bovina magra": { qty: 0.8, unit: "kg" },
+        "Tilápia": { qty: 0.5, unit: "kg" },
+        "Ovos": { qty: 12, unit: "un." },
+        "Ovo": { qty: 6, unit: "un." },
+        "Iogurte natural": { qty: 6, unit: "un." },
+        "Queijo branco": { qty: 300, unit: "g" },
+        "Queijo minas": { qty: 300, unit: "g" },
+        "Queijo cottage": { qty: 200, unit: "g" },
+        "Peito de peru": { qty: 150, unit: "g" },
+        "Pão integral": { qty: 2, unit: "pac" },
+        "Goma de tapioca": { qty: 500, unit: "g" },
+        "Farinha de milho": { qty: 500, unit: "g" },
+        "Arroz integral": { qty: 1, unit: "kg" },
+        "Arroz": { qty: 1, unit: "kg" },
+        "Feijão": { qty: 500, unit: "g" },
+        "Lentilha": { qty: 300, unit: "g" },
+        "Grão-de-bico": { qty: 300, unit: "g" },
+        "Aveia": { qty: 250, unit: "g" },
+        "Macarrão integral": { qty: 250, unit: "g" },
+        "Quinoa": { qty: 200, unit: "g" },
+        "Brócolis": { qty: 1, unit: "maço" },
+        "Couve": { qty: 1, unit: "maço" },
+        "Alface": { qty: 1, unit: "maço" },
+        "Cenoura": { qty: 3, unit: "un." },
+        "Abóbora": { qty: 300, unit: "g" },
+        "Batata-doce": { qty: 2, unit: "un." },
+        "Batata": { qty: 2, unit: "un." },
+        "Tomate": { qty: 4, unit: "un." },
+        "Banana": { qty: 6, unit: "un." },
+        "Maçã": { qty: 5, unit: "un." },
+        "Limão": { qty: 3, unit: "un." },
+        "Leite": { qty: 1, unit: "L" },
+        "Leite vegetal": { qty: 1, unit: "L" },
+        "Café": { qty: 200, unit: "g" },
+        "Pasta de amendoim": { qty: 200, unit: "g" },
+        "Castanhas": { qty: 100, unit: "g" }
     }
 };
 
-// Get stored language or default to Portuguese
-let currentLanguage = localStorage.getItem('language') || 'pt';
-let currentTheme = localStorage.getItem('theme') || 'dark';
+/* ========================================
+   2. UTILIDADES
+   ======================================== */
+const UTILS = {
+    randomChoice(arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
+    },
 
-// Initialize theme on page load
-function initializeTheme() {
-    setTheme(currentTheme);
-}
+    normalizeIngredientName(name) {
+        return name.trim();
+    },
 
-function setTheme(theme) {
-    currentTheme = theme;
-    localStorage.setItem('theme', theme);
-
-    if (theme === 'light') {
-        document.documentElement.setAttribute('data-theme', 'light');
-        const themeIcon = document.querySelector('.theme-icon');
-        if (themeIcon) themeIcon.textContent = '☀️';
-    } else {
-        document.documentElement.removeAttribute('data-theme');
-        const themeIcon = document.querySelector('.theme-icon');
-        if (themeIcon) themeIcon.textContent = '🌙';
-    }
-}
-
-function toggleTheme() {
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    setTheme(newTheme);
-}
-
-// Language switching functions
-function setLanguage(lang) {
-    currentLanguage = lang;
-    localStorage.setItem('language', lang);
-    document.documentElement.setAttribute('data-language', lang);
-
-    // Update active button
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.getAttribute('data-lang') === lang) {
-            btn.classList.add('active');
-        }
-    });
-
-    // Update all translatable elements
-    document.querySelectorAll('[data-i18n]').forEach(element => {
-        const key = element.getAttribute('data-i18n');
-        if (translations[lang] && translations[lang][key]) {
-            element.textContent = translations[lang][key];
-        }
-    });
-
-    // Update experience periods with new language
-    updateExperiencePeriods();
-}
-
-function setupLanguageButtons() {
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const lang = this.getAttribute('data-lang');
-            setLanguage(lang);
-        });
-    });
-}
-
-// Calculate experience duration
-function calculateExperienceDuration(startDateStr, endDateStr) {
-    const startDate = new Date(startDateStr + '-01');
-    const endDate = endDateStr === 'present' ? new Date() : new Date(endDateStr + '-01');
-
-    let years = endDate.getFullYear() - startDate.getFullYear();
-    let months = endDate.getMonth() - startDate.getMonth();
-
-    if (months < 0) {
-        years--;
-        months += 12;
-    }
-
-    const lang = currentLanguage || 'pt';
-    const formatDuration = (y, m) => {
-        if (lang === 'pt') {
-            if (y === 0) return m === 1 ? `${m} mês` : `${m} meses`;
-            if (m === 0) return y === 1 ? `${y} ano` : `${y} anos`;
-            return `${y} ${y === 1 ? 'ano' : 'anos'} ${m} ${m === 1 ? 'mês' : 'meses'}`;
-        } else if (lang === 'en') {
-            if (y === 0) return m === 1 ? `${m} month` : `${m} months`;
-            if (m === 0) return y === 1 ? `${y} year` : `${y} years`;
-            return `${y} ${y === 1 ? 'year' : 'years'} ${m} ${m === 1 ? 'month' : 'months'}`;
-        } else if (lang === 'es') {
-            if (y === 0) return m === 1 ? `${m} mes` : `${m} meses`;
-            if (m === 0) return y === 1 ? `${y} año` : `${y} años`;
-            return `${y} ${y === 1 ? 'año' : 'años'} ${m} ${m === 1 ? 'mes' : 'meses'}`;
-        }
-    };
-
-    return formatDuration(years, months);
-}
-
-// Update all experience periods
-function updateExperiencePeriods() {
-    const periodElements = document.querySelectorAll('.period[data-start][data-end]');
-    periodElements.forEach(element => {
-        const startDate = element.getAttribute('data-start');
-        const endDate = element.getAttribute('data-end');
-        const duration = calculateExperienceDuration(startDate, endDate);
-        const lang = currentLanguage || 'pt';
-        const locale = lang === 'pt' ? 'pt-BR' : lang === 'en' ? 'en-US' : 'es-ES';
-
-        const startMonth = new Date(startDate + '-01').toLocaleDateString(locale, { month: 'short', year: 'numeric' });
-        let endMonth;
-        if (endDate === 'present') {
-            endMonth = lang === 'en' ? 'Present' : lang === 'es' ? 'Presente' : 'Presente';
-        } else {
-            endMonth = new Date(endDate + '-01').toLocaleDateString(locale, { month: 'short', year: 'numeric' });
-        }
-
-        element.textContent = `${startMonth} - ${endMonth} • ${duration}`;
-    });
-}
-
-// Initialize
-document.addEventListener('DOMContentLoaded', function() {
-    initializeTheme();
-    setLanguage(currentLanguage);
-    setupLanguageButtons();
-
-    // Update experience periods
-    updateExperiencePeriods();
-
-    const themeToggle = document.getElementById('theme-toggle');
-    if (themeToggle) {
-        themeToggle.addEventListener('click', toggleTheme);
-    }
-
-    smoothScroll();
-
-    // Scroll reveal animation
-    document.querySelectorAll('.experience-card, .skill-category, .stat-card').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'all 0.6s ease';
-        observer.observe(el);
-    });
-
-    // Mobile Menu Toggle
-    const hamburgerMenu = document.getElementById('hamburger-menu');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-    const closeMenuBtn = document.getElementById('close-menu');
-    const mobileMenuLinks = document.querySelectorAll('.mobile-menu-links a');
-
-    if (hamburgerMenu && mobileMenu && mobileMenuOverlay && closeMenuBtn) {
-        // Open menu
-        hamburgerMenu.addEventListener('click', function() {
-            hamburgerMenu.classList.add('active');
-            mobileMenu.classList.add('active');
-            mobileMenuOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
-
-        // Close menu function
-        function closeMenu() {
-            hamburgerMenu.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            mobileMenuOverlay.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Close menu button
-        closeMenuBtn.addEventListener('click', closeMenu);
-
-        // Close menu on overlay click
-        mobileMenuOverlay.addEventListener('click', closeMenu);
-
-        // Close menu when a link is clicked
-        mobileMenuLinks.forEach(link => {
-            link.addEventListener('click', closeMenu);
-        });
-
-        // Close menu on resize if window gets bigger
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 768) {
-                closeMenu();
+    classifyIngredient(name) {
+        const low = name.toLowerCase();
+        for (const [cat, keys] of Object.entries(CONFIG.categoryKeywords)) {
+            for (const k of keys) {
+                if (low.includes(k.toLowerCase())) return cat;
             }
-        });
+        }
+        return "outros";
+    },
+
+    findOptionByName(name, list) {
+        return list.find(opt => opt.name.toLowerCase().includes(name.trim().toLowerCase()));
+    },
+
+    getProteinLabel(protein) {
+        const labels = {
+            "frango": "Frango",
+            "bovina": "Carne bovina",
+            "peixe": "Peixe",
+            "ovo": "Ovo",
+            "laticinio": "Laticínios",
+            "vegetariano": "Vegetarianas",
+            "porco": "Carne suína"
+        };
+        return labels[protein] || protein;
     }
-});
-
-// Smooth scroll for anchor links
-function smoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href !== '#' && document.querySelector(href)) {
-                e.preventDefault();
-                const target = document.querySelector(href);
-                const offset = 80; // navbar height
-                const targetPosition = target.offsetTop - offset;
-
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-}
-
-// Scroll reveal animation
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
 };
 
-const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
+/* ========================================
+   3. ESTADO DA APLICAÇÃO
+   ======================================== */
+const STATE = {
+    currentSelections: { breakfast: [], lunch: [], snack: [] },
 
-// Navbar scroll effect
-window.addEventListener('scroll', function() {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
-    } else {
-        navbar.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
+    getProteinsList() {
+        const set = new Set();
+        for (const mt of["breakfast", "lunch", "snack"]) {
+            for (const opt of this.currentSelections[mt]) {
+                if (!opt) continue;
+                for (const p of opt.proteins) set.add(p);
+            }
+        }
+        return Array.from(set);
+    },
+
+    setMeal(mealType, dayIndex, option) {
+        if (!this.currentSelections[mealType]) this.currentSelections[mealType] = [];
+        this.currentSelections[mealType][dayIndex] = option;
+    },
+
+    getMeal(mealType, dayIndex) {
+        return this.currentSelections[mealType] ? .[dayIndex];
     }
-});
+};
+
+/* ========================================
+   4. INTERFACE DO USUÁRIO
+   ======================================== */
+const UI = {
+    getOptionByMealType(mealType) {
+        const map = {
+            "breakfast": CONFIG.breakfastOptions,
+            "lunch": CONFIG.lunchOptions,
+            "snack": CONFIG.snackOptions
+        };
+        return map[mealType] || [];
+    },
+
+    chooseReplacement(mealType, currentOpt) {
+        const pool = this.getOptionByMealType(mealType);
+        const proteinsNow = STATE.getProteinsList();
+        const candidates = pool.filter(o => o.name !== currentOpt.name);
+
+        const preferred = candidates.filter(o =>
+            o.proteins.some(p => proteinsNow.includes(p))
+        );
+
+        return preferred.length > 0 ? UTILS.randomChoice(preferred) : UTILS.randomChoice(candidates);
+    },
+
+    handleSwap(mealType, dayIndex) {
+        const currentOpt = STATE.getMeal(mealType, dayIndex);
+        const newOpt = this.chooseReplacement(mealType, currentOpt);
+
+        STATE.setMeal(mealType, dayIndex, newOpt);
+
+        const section = document.querySelector(`.meal-section[data-meal-type="${mealType}"]`);
+        if (!section) return;
+
+        const dayCards = Array.from(section.querySelectorAll(".day-card"));
+        const card = dayCards[dayIndex];
+        if (card) {
+            const mealTextEl = card.querySelector(".day-meal");
+            if (mealTextEl) mealTextEl.textContent = newOpt.name;
+        }
+
+        this.updateIngredientsAndProteins();
+    },
+
+    updateIngredientsAndProteins() {
+        const proteins = STATE.getProteinsList();
+        const proteinsReadable = proteins.map(p => UTILS.getProteinLabel(p)).join(", ") || "—";
+
+        const proteinasEl = document.getElementById("proteinas-da-semana");
+        if (proteinasEl) {
+            proteinasEl.innerHTML = `🍗 Proteínas da semana: <strong>${proteinsReadable}</strong>`;
+        }
+
+        this.renderShoppingList();
+    },
+
+    renderShoppingList() {
+        const aggregate = {};
+        for (const mt of["breakfast", "lunch", "snack"]) {
+            for (const opt of STATE.currentSelections[mt]) {
+                if (!opt) continue;
+                for (let ing of opt.ingredients) {
+                    ing = UTILS.normalizeIngredientName(ing);
+                    aggregate[ing] = (aggregate[ing] || 0) + 1;
+                }
+            }
+        }
+
+        const categories = { proteinas: {}, graos: {}, legumes: {}, frutas: {}, temperos: {}, outros: {} };
+        for (const [ing, count] of Object.entries(aggregate)) {
+            const cat = UTILS.classifyIngredient(ing);
+            categories[cat][ing] = count;
+        }
+
+        this.renderCategoryLists(categories);
+    },
+
+    renderCategoryLists(categories) {
+        const buildListLines = (obj) => {
+            const lines = [];
+            for (const [ing, count] of Object.entries(obj)) {
+                const norm = ing.replace(/\s+/g, ' ').trim();
+                let suggested = CONFIG.defaultUnitByIngredient[norm];
+
+                if (!suggested) {
+                    for (const k of Object.keys(CONFIG.defaultUnitByIngredient)) {
+                        if (norm.toLowerCase().includes(k.toLowerCase())) {
+                            suggested = CONFIG.defaultUnitByIngredient[k];
+                            break;
+                        }
+                    }
+                }
+
+                let qtyLabel = "";
+                if (suggested) {
+                    let total = suggested.qty * count;
+                    if (typeof total === "number") {
+                        total = total < 1 && total > 0 ? Math.ceil(total) : Math.round(total * 10) / 10;
+                    }
+                    qtyLabel = `${total} ${suggested.unit}`;
+                } else {
+                    qtyLabel = `${count}x`;
+                }
+
+                lines.push({ name: norm, qty: qtyLabel });
+            }
+            lines.sort((a, b) => a.name.localeCompare(b.name));
+            return lines;
+        };
+
+        const renderList = (ulId, list) => {
+            const ul = document.getElementById(ulId);
+            if (!ul) return;
+            ul.innerHTML = "";
+            for (const it of(list.length ? list : [{ name: "—", qty: "" }])) {
+                const li = document.createElement("li");
+                li.innerHTML = `<span class="item-name">${it.name}</span><span class="item-qty">${it.qty}</span>`;
+                ul.appendChild(li);
+            }
+        };
+
+        renderList("cat-proteinas", buildListLines(categories.proteinas));
+        renderList("cat-graos", buildListLines(categories.graos));
+        renderList("cat-legumes", buildListLines(categories.legumes));
+        renderList("cat-frutas", buildListLines(categories.frutas));
+        renderList("cat-temperos", buildListLines(categories.temperos));
+        renderList("cat-outros", buildListLines(categories.outros));
+    }
+};
+
+/* ========================================
+   5. INICIALIZAÇÃO
+   ======================================== */
+const INIT = {
+    setupEventListeners() {
+        const mealSections = document.querySelectorAll(".meal-section");
+        mealSections.forEach(section => {
+            const mealType = section.dataset.mealType;
+            const dayCards = section.querySelectorAll(".day-card");
+
+            dayCards.forEach((card, idx) => {
+                const mealTextEl = card.querySelector(".day-meal");
+                const swapBtn = card.querySelector(".swap-btn");
+
+                const displayedText = mealTextEl.textContent.trim();
+                const pool = UI.getOptionByMealType(mealType);
+                let opt = UTILS.findOptionByName(displayedText, pool) || UTILS.randomChoice(pool);
+
+                STATE.setMeal(mealType, idx, opt);
+                mealTextEl.textContent = opt.name;
+
+                if (swapBtn) {
+                    swapBtn.addEventListener("click", () => {
+                        UI.handleSwap(mealType, idx);
+                    });
+                }
+            });
+        });
+    },
+
+    initialize() {
+        this.setupEventListeners();
+        UI.updateIngredientsAndProteins();
+    }
+};
+
+// Inicializar quando documento estiver pronto
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => INIT.initialize());
+} else {
+    INIT.initialize();
+}
