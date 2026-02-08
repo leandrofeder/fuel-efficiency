@@ -17,7 +17,31 @@ let CONFIG = {
     categoryKeywords: {},
     defaultUnitByIngredient: {},
     proteinLabels: {},
-    selectedProteins: new Set()
+    selectedProteins: new Set(),
+    mealTypeLabels: {
+        breakfast: "Café da Manhã",
+        lunch: "Almoço",
+        snack: "Lanche da Tarde"
+    }
+};
+
+/* ========================================
+   0.5. NOTIFICAÇÕES CUSTOMIZADAS
+   ======================================== */
+const NOTIFY = {
+    show(title, message) {
+        const modal = document.getElementById("notification-modal");
+        const titleEl = document.getElementById("modal-title");
+        const messageEl = document.getElementById("modal-message");
+        
+        if (titleEl) titleEl.textContent = title;
+        if (messageEl) messageEl.textContent = message;
+        if (modal) modal.classList.remove("hidden");
+    },
+
+    warning(message) {
+        this.show("⚠️ Aviso", message);
+    }
 };
 
 /* ========================================
@@ -151,7 +175,8 @@ const UI = {
 
         const newOpt = this.chooseReplacement(mealType, currentOpt);
         if (!newOpt) {
-            alert(`Nenhuma opção disponível com as proteínas selecionadas para ${mealType}`);
+            const mealLabel = CONFIG.mealTypeLabels[mealType] || mealType;
+            NOTIFY.warning(`Não temos opção de ${mealLabel} com as proteínas selecionadas.`);
             return;
         }
 
@@ -278,7 +303,8 @@ const INIT = {
             const availableMeals = UI.getOptionByMealType(mealType);
 
             if (availableMeals.length === 0) {
-                alert(`Nenhuma opção de ${mealType} com as proteínas selecionadas!`);
+                const mealLabel = CONFIG.mealTypeLabels[mealType] || mealType;
+                NOTIFY.warning(`Não temos opção de ${mealLabel} com as proteínas selecionadas.`);
                 return;
             }
 

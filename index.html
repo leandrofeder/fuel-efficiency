@@ -192,6 +192,17 @@
         </div>
     </div>
 
+    <!-- MODAL DE NOTIFICAÇÃO -->
+    <div id="notification-modal" class="modal hidden">
+        <div class="modal-content">
+            <button class="modal-close" onclick="document.getElementById('notification-modal').classList.add('hidden')">&times;</button>
+            <div class="modal-icon">⚠️</div>
+            <h2 id="modal-title">Aviso</h2>
+            <p id="modal-message"></p>
+            <button class="modal-btn" onclick="document.getElementById('notification-modal').classList.add('hidden')">OK</button>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 
