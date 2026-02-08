@@ -1,4 +1,5 @@
-[{
+[
+    {
         "name": "Ovos mexidos (2 un.) + Pão integral (1 fatia)",
         "ingredients": ["Ovos", "Pão integral", "Azeite"],
         "proteins": ["ovo"]
@@ -102,5 +103,80 @@
         "name": "Cuscuz de milho + Queijo branco + Azeite",
         "ingredients": ["Farinha de milho", "Queijo branco", "Azeite"],
         "proteins": ["laticinio"]
+    },
+    {
+        "name": "Omelete (2 ovos) com Brócolis + Queijo",
+        "ingredients": ["Ovos", "Brócolis", "Queijo branco"],
+        "proteins": ["ovo", "laticinio"]
+    },
+    {
+        "name": "Pão integral tostado + Ovos meigos + Cogumelo refogado",
+        "ingredients": ["Pão integral", "Ovos", "Cogumelo"],
+        "proteins": ["ovo"]
+    },
+    {
+        "name": "Frutas vermelhas (Morango, Mirtilo) + Iogurte grego + Mel",
+        "ingredients": ["Morango", "Blueberry", "Iogurte natural", "Mel"],
+        "proteins": ["laticinio"]
+    },
+    {
+        "name": "Banana + Iogurte natural + Granola + Mel",
+        "ingredients": ["Banana", "Iogurte natural", "Granola", "Mel"],
+        "proteins": ["laticinio"]
+    },
+    {
+        "name": "Ovos escalfados com Espinafre + Pão integral",
+        "ingredients": ["Ovos", "Espinafre", "Pão integral"],
+        "proteins": ["ovo"]
+    },
+    {
+        "name": "Smoothie: Leite + Banana + Morango + Aveia",
+        "ingredients": ["Leite", "Banana", "Morango", "Aveia"],
+        "proteins": ["laticinio"]
+    },
+    {
+        "name": "Tapioca com Carne seca refogada + Tomate",
+        "ingredients": ["Goma de tapioca", "Peito de peru", "Tomate"],
+        "proteins": ["frango"]
+    },
+    {
+        "name": "Queijo cottage (1 pote) + Frutas em calda + Castanhas",
+        "ingredients": ["Queijo cottage", "Frutas variadas", "Castanhas"],
+        "proteins": ["laticinio"]
+    },
+    {
+        "name": "Pão sírio integral + Homus + Tomate + Pepino",
+        "ingredients": ["Pão sírio", "Homus", "Tomate", "Pepino"],
+        "proteins": ["vegetariano"]
+    },
+    {
+        "name": "Ovo frito + Abacate + Tomate picado",
+        "ingredients": ["Ovo", "Abacate", "Tomate"],
+        "proteins": ["ovo"]
+    },
+    {
+        "name": "Açaí batido com Leite + Granola + Frutas vermelhas",
+        "ingredients": ["Açaí congelado", "Leite", "Granola", "Morango"],
+        "proteins": ["laticinio"]
+    },
+    {
+        "name": "Ovos mexidos com Cebola e Alho + Pão integral",
+        "ingredients": ["Ovos", "Cebola", "Alho", "Pão integral"],
+        "proteins": ["ovo"]
+    },
+    {
+        "name": "Bebida de aveia + Framboesa + Banana + Mel",
+        "ingredients": ["Leite de aveia", "Framboesa", "Banana", "Mel"],
+        "proteins": ["vegetariano"]
+    },
+    {
+        "name": "Tapioca com Queijo derretido + Goiabada",
+        "ingredients": ["Goma de tapioca", "Queijo minas", "Goiabada"],
+        "proteins": ["laticinio"]
+    },
+    {
+        "name": "Ovos com Brócolis + Queijo cottage + Café com leite",
+        "ingredients": ["Ovos", "Brócolis", "Queijo cottage", "Leite", "Café"],
+        "proteins": ["ovo", "laticinio"]
     }
 ]

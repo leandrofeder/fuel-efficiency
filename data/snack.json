@@ -1,22 +1,177 @@
 [
-  { "name": "Fruta (Maçã/Pera) + Castanhas (5 un.)", "ingredients": ["Maçã", "Castanhas"], "proteins": ["vegetariano"] },
-  { "name": "Iogurte natural (1 pote) + Linhaça", "ingredients": ["Iogurte natural", "Sementes variadas"], "proteins": ["laticinio"] },
-  { "name": "Ovo cozido (1 un.) + Sal", "ingredients": ["Ovo"], "proteins": ["ovo"] },
-  { "name": "Queijo minas/branco + Tomate + Orégano", "ingredients": ["Queijo minas", "Tomate", "Orégano"], "proteins": ["laticinio"] },
-  { "name": "Pão integral + Ricota amassada", "ingredients": ["Pão integral", "Ricota"], "proteins": ["laticinio"] },
-  { "name": "Cenoura/Pepino + Homus", "ingredients": ["Cenoura", "Homus"], "proteins": ["vegetariano"] },
-  { "name": "Banana (1 un.) + Pasta de amendoim", "ingredients": ["Banana", "Pasta de amendoim"], "proteins": ["vegetariano"] },
-  { "name": "Vitamina: Leite vegetal + Fruta", "ingredients": ["Leite vegetal", "Banana"], "proteins": ["vegetariano"] },
-  { "name": "Wrap integral + Frango desfiado", "ingredients": ["Wrap integral", "Frango desfiado"], "proteins": ["frango"] },
-  { "name": "Pudim de chia + Leite de coco", "ingredients": ["Sementes de chia", "Leite de coco"], "proteins": ["vegetariano"] },
-  { "name": "Pão integral + Ovo cozido + Café", "ingredients": ["Pão integral", "Ovo", "Café"], "proteins": ["ovo"] },
-  { "name": "Iogurte + Aveia + Mel", "ingredients": ["Iogurte natural", "Aveia", "Mel"], "proteins": ["laticinio"] },
-  { "name": "Banana (1 un.) + Queijo minas", "ingredients": ["Banana", "Queijo minas"], "proteins": ["laticinio"] },
-  { "name": "Ricota + Tomate + Orégano", "ingredients": ["Ricota", "Tomate", "Orégano"], "proteins": ["laticinio"] },
-  { "name": "Pepino + Queijo cottage", "ingredients": ["Pepino", "Queijo cottage"], "proteins": ["laticinio"] },
-  { "name": "Wrap integral + Queijo branco", "ingredients": ["Wrap integral", "Queijo branco"], "proteins": ["laticinio"] },
-  { "name": "Vitamina: Leite + Morango", "ingredients": ["Leite", "Morango"], "proteins": ["laticinio"] },
-  { "name": "Ovo mexido + Pão integral", "ingredients": ["Ovo", "Pão integral"], "proteins": ["ovo"] },
-  { "name": "Iogurte + Castanhas", "ingredients": ["Iogurte natural", "Castanhas"], "proteins": ["laticinio", "vegetariano"] },
-  { "name": "Pão integral + Peito de peru", "ingredients": ["Pão integral", "Peito de peru"], "proteins": ["frango"] }
+    {
+        "name": "Fruta (Maçã/Pera) + Castanhas (5 un.)",
+        "ingredients": ["Maçã", "Castanhas"],
+        "proteins": ["vegetariano"]
+    },
+    {
+        "name": "Iogurte natural (1 pote) + Linhaça",
+        "ingredients": ["Iogurte natural", "Sementes variadas"],
+        "proteins": ["laticinio"]
+    },
+    {
+        "name": "Ovo cozido (1 un.) + Sal",
+        "ingredients": ["Ovo"],
+        "proteins": ["ovo"]
+    },
+    {
+        "name": "Queijo minas/branco + Tomate + Orégano",
+        "ingredients": ["Queijo minas", "Tomate", "Orégano"],
+        "proteins": ["laticinio"]
+    },
+    {
+        "name": "Pão integral + Ricota amassada",
+        "ingredients": ["Pão integral", "Ricota"],
+        "proteins": ["laticinio"]
+    },
+    {
+        "name": "Cenoura/Pepino + Homus",
+        "ingredients": ["Cenoura", "Homus"],
+        "proteins": ["vegetariano"]
+    },
+    {
+        "name": "Banana (1 un.) + Pasta de amendoim",
+        "ingredients": ["Banana", "Pasta de amendoim"],
+        "proteins": ["vegetariano"]
+    },
+    {
+        "name": "Vitamina: Leite vegetal + Fruta",
+        "ingredients": ["Leite vegetal", "Banana"],
+        "proteins": ["vegetariano"]
+    },
+    {
+        "name": "Wrap integral + Frango desfiado",
+        "ingredients": ["Wrap integral", "Frango desfiado"],
+        "proteins": ["frango"]
+    },
+    {
+        "name": "Pudim de chia + Leite de coco",
+        "ingredients": ["Sementes de chia", "Leite de coco"],
+        "proteins": ["vegetariano"]
+    },
+    {
+        "name": "Pão integral + Ovo cozido + Café",
+        "ingredients": ["Pão integral", "Ovo", "Café"],
+        "proteins": ["ovo"]
+    },
+    {
+        "name": "Iogurte + Aveia + Mel",
+        "ingredients": ["Iogurte natural", "Aveia", "Mel"],
+        "proteins": ["laticinio"]
+    },
+    {
+        "name": "Banana (1 un.) + Queijo minas",
+        "ingredients": ["Banana", "Queijo minas"],
+        "proteins": ["laticinio"]
+    },
+    {
+        "name": "Ricota + Tomate + Orégano",
+        "ingredients": ["Ricota", "Tomate", "Orégano"],
+        "proteins": ["laticinio"]
+    },
+    {
+        "name": "Pepino + Queijo cottage",
+        "ingredients": ["Pepino", "Queijo cottage"],
+        "proteins": ["laticinio"]
+    },
+    {
+        "name": "Wrap integral + Queijo branco",
+        "ingredients": ["Wrap integral", "Queijo branco"],
+        "proteins": ["laticinio"]
+    },
+    {
+        "name": "Vitamina: Leite + Morango",
+        "ingredients": ["Leite", "Morango"],
+        "proteins": ["laticinio"]
+    },
+    {
+        "name": "Ovo mexido + Pão integral",
+        "ingredients": ["Ovo", "Pão integral"],
+        "proteins": ["ovo"]
+    },
+    {
+        "name": "Iogurte + Castanhas",
+        "ingredients": ["Iogurte natural", "Castanhas"],
+        "proteins": ["laticinio", "vegetariano"]
+    },
+    {
+        "name": "Pão integral + Peito de peru",
+        "ingredients": ["Pão integral", "Peito de peru"],
+        "proteins": ["frango"]
+    },
+    {
+        "name": "Maçã + Amendoim natural",
+        "ingredients": ["Maçã", "Amendoim natural"],
+        "proteins": ["vegetariano"]
+    },
+    {
+        "name": "Iogurte Grego + Mel + Nozes",
+        "ingredients": ["Iogurte natural", "Mel", "Castanhas"],
+        "proteins": ["laticinio"]
+    },
+    {
+        "name": "Queijo cottage + Morango + Mel",
+        "ingredients": ["Queijo cottage", "Morango", "Mel"],
+        "proteins": ["laticinio"]
+    },
+    {
+        "name": "Frutas frescas (Melancia, Melão) + Banana",
+        "ingredients": ["Melancia", "Melão", "Banana"],
+        "proteins": ["vegetariano"]
+    },
+    {
+        "name": "Batata-doce cozida + Caldo de Frango leve",
+        "ingredients": ["Batata-doce", "Peito de peru"],
+        "proteins": ["frango"]
+    },
+    {
+        "name": "Bolo de cenoura integral (1 fatia) + Café",
+        "ingredients": ["Cenoura", "Pão integral", "Café"],
+        "proteins": ["vegetariano"]
+    },
+    {
+        "name": "Barra de Proteína caseira + Chá",
+        "ingredients": ["Aveia", "Mel", "Castanhas", "Chá"],
+        "proteins": ["vegetariano"]
+    },
+    {
+        "name": "Gelatina diet com Frutas vermelhas",
+        "ingredients": ["Gelatina", "Morango", "Framboesa"],
+        "proteins": ["laticinio"]
+    },
+    {
+        "name": "Pão sírio + Homus + Cenoura discos",
+        "ingredients": ["Pão sírio", "Homus", "Cenoura"],
+        "proteins": ["vegetariano"]
+    },
+    {
+        "name": "Ovos em geleia (gelatina) + Chá verde",
+        "ingredients": ["Gelatina", "Ovo", "Chá"],
+        "proteins": ["ovo", "laticinio"]
+    },
+    {
+        "name": "Iogurte com Granola + Frutas secas",
+        "ingredients": ["Iogurte natural", "Granola", "Frutas secas"],
+        "proteins": ["laticinio"]
+    },
+    {
+        "name": "Broa de milho pequena + Queijo fresco",
+        "ingredients": ["Broa de milho", "Queijo minas"],
+        "proteins": ["laticinio"]
+    },
+    {
+        "name": "Smoothie: Leite + Morango + Banana + Aveia",
+        "ingredients": ["Leite", "Morango", "Banana", "Aveia"],
+        "proteins": ["laticinio"]
+    },
+    {
+        "name": "Fruta (Laranja, Tangerina) + Castanha do pará",
+        "ingredients": ["Laranja", "Castanha do pará"],
+        "proteins": ["vegetariano"]
+    },
+    {
+        "name": "Bolo de milho integral pequeno + Café com leite",
+        "ingredients": ["Farinha de milho", "Leite", "Café"],
+        "proteins": ["laticinio"]
+    }
 ]
