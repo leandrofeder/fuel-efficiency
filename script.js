@@ -283,6 +283,15 @@ const UI = {
 const INIT = {
     setupProteinSelector() {
         const checkboxes = document.querySelectorAll(".protein-checkbox");
+        
+        // Inicializar com todas as proteínas selecionadas por padrão
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                CONFIG.selectedProteins.add(checkbox.value);
+            }
+        });
+        
+        // Adicionar event listeners para mudanças
         checkboxes.forEach(checkbox => {
             checkbox.addEventListener("change", () => {
                 if (checkbox.checked) {

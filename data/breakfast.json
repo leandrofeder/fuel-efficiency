@@ -1,23 +1,106 @@
-[
-  { "name": "Ovos mexidos (2 un.) + Pão integral (1 fatia)", "ingredients": ["Ovos", "Pão integral", "Azeite"], "proteins": ["ovo"] },
-  { "name": "Iogurte natural (1 pote) + Aveia (2 col. sopa) + Banana", "ingredients": ["Iogurte natural", "Aveia", "Banana"], "proteins": ["laticinio"] },
-  { "name": "Crepioca (2 col. sopa) + Queijo branco (1 fatia)", "ingredients": ["Goma de tapioca", "Ovos", "Queijo branco"], "proteins": ["ovo", "laticinio"] },
-  { "name": "Vitamina de Leite (1 copo) + Mamão + Aveia", "ingredients": ["Leite", "Mamão", "Aveia"], "proteins": ["laticinio"] },
-  { "name": "Cuscuz de milho (pequeno) + Ovo (1 un.)", "ingredients": ["Farinha de milho", "Ovo"], "proteins": ["ovo"] },
-  { "name": "Pão integral + Pasta de amendoim + Café", "ingredients": ["Pão integral", "Pasta de amendoim", "Café"], "proteins": ["vegetariano"] },
-  { "name": "Tapioca (2 col. sopa) + Queijo minas + Orégano", "ingredients": ["Goma de tapioca", "Queijo minas"], "proteins": ["laticinio"] },
-  { "name": "Mingau de aveia (3 col. sopa) + Canela", "ingredients": ["Aveia", "Leite", "Canela"], "proteins": ["laticinio"] },
-  { "name": "Salada de frutas + Iogurte natural", "ingredients": ["Frutas variadas", "Iogurte natural"], "proteins": ["laticinio"] },
-  { "name": "Torrada integral + Abacate + Limão", "ingredients": ["Pão integral", "Abacate", "Limão"], "proteins": ["vegetariano"] },
-  { "name": "Ovos cozidos (2 un.) + Tomate + Orégano", "ingredients": ["Ovos", "Tomate", "Orégano"], "proteins": ["ovo"] },
-  { "name": "Iogurte + Granola + Morango", "ingredients": ["Iogurte natural", "Granola", "Morango"], "proteins": ["laticinio"] },
-  { "name": "Tapioca + Ovo mexido + Queijo minas", "ingredients": ["Goma de tapioca", "Ovos", "Queijo minas"], "proteins": ["ovo", "laticinio"] },
-  { "name": "Vitamina de Leite + Banana + Sementes", "ingredients": ["Leite", "Banana", "Pasta de amendoim"], "proteins": ["laticinio", "vegetariano"] },
-  { "name": "Pão integral + Queijo branco + Café", "ingredients": ["Pão integral", "Queijo branco", "Café"], "proteins": ["laticinio"] },
-  { "name": "Mingau de aveia + Banana", "ingredients": ["Aveia", "Leite", "Banana"], "proteins": ["laticinio"] },
-  { "name": "Crepioca + Peito de peru (2 fatias)", "ingredients": ["Goma de tapioca", "Ovos", "Peito de peru"], "proteins": ["ovo", "frango"] },
-  { "name": "Ovos mexidos + Queijo cottage + Cenoura", "ingredients": ["Ovos", "Queijo cottage", "Cenoura"], "proteins": ["ovo", "laticinio"] },
-  { "name": "Iogurte + Sementes de chia + Pera", "ingredients": ["Iogurte natural", "Sementes de chia", "Pera"], "proteins": ["laticinio", "vegetariano"] },
-  { "name": "Pão integral + Ricota + Manjericão", "ingredients": ["Pão integral", "Ricota", "Manjericão"], "proteins": ["laticinio"] },
-  { "name": "Cuscuz de milho + Queijo branco + Azeite", "ingredients": ["Farinha de milho", "Queijo branco", "Azeite"], "proteins": ["laticinio"] }
+[{
+        "name": "Ovos mexidos (2 un.) + Pão integral (1 fatia)",
+        "ingredients": ["Ovos", "Pão integral", "Azeite"],
+        "proteins": ["ovo"]
+    },
+    {
+        "name": "Iogurte natural (1 pote) + Aveia (2 col. sopa) + Banana",
+        "ingredients": ["Iogurte natural", "Aveia", "Banana"],
+        "proteins": ["laticinio"]
+    },
+    {
+        "name": "Crepioca (2 col. sopa) + Queijo branco (1 fatia)",
+        "ingredients": ["Goma de tapioca", "Ovos", "Queijo branco"],
+        "proteins": ["ovo", "laticinio"]
+    },
+    {
+        "name": "Vitamina de Leite (1 copo) + Mamão + Aveia",
+        "ingredients": ["Leite", "Mamão", "Aveia"],
+        "proteins": ["laticinio"]
+    },
+    {
+        "name": "Cuscuz de milho (pequeno) + Ovo (1 un.)",
+        "ingredients": ["Farinha de milho", "Ovo"],
+        "proteins": ["ovo"]
+    },
+    {
+        "name": "Pão integral + Pasta de amendoim + Café",
+        "ingredients": ["Pão integral", "Pasta de amendoim", "Café"],
+        "proteins": ["vegetariano"]
+    },
+    {
+        "name": "Tapioca (2 col. sopa) + Queijo minas + Orégano",
+        "ingredients": ["Goma de tapioca", "Queijo minas"],
+        "proteins": ["laticinio"]
+    },
+    {
+        "name": "Mingau de aveia (3 col. sopa) + Canela",
+        "ingredients": ["Aveia", "Leite", "Canela"],
+        "proteins": ["laticinio"]
+    },
+    {
+        "name": "Salada de frutas + Iogurte natural",
+        "ingredients": ["Frutas variadas", "Iogurte natural"],
+        "proteins": ["laticinio"]
+    },
+    {
+        "name": "Torrada integral + Abacate + Limão",
+        "ingredients": ["Pão integral", "Abacate", "Limão"],
+        "proteins": ["vegetariano"]
+    },
+    {
+        "name": "Ovos cozidos (2 un.) + Tomate + Orégano",
+        "ingredients": ["Ovos", "Tomate", "Orégano"],
+        "proteins": ["ovo"]
+    },
+    {
+        "name": "Iogurte + Granola + Morango",
+        "ingredients": ["Iogurte natural", "Granola", "Morango"],
+        "proteins": ["laticinio"]
+    },
+    {
+        "name": "Tapioca + Ovo mexido + Queijo minas",
+        "ingredients": ["Goma de tapioca", "Ovos", "Queijo minas"],
+        "proteins": ["ovo", "laticinio"]
+    },
+    {
+        "name": "Vitamina de Leite + Banana + Sementes",
+        "ingredients": ["Leite", "Banana", "Pasta de amendoim"],
+        "proteins": ["laticinio", "vegetariano"]
+    },
+    {
+        "name": "Pão integral + Queijo branco + Café",
+        "ingredients": ["Pão integral", "Queijo branco", "Café"],
+        "proteins": ["laticinio"]
+    },
+    {
+        "name": "Mingau de aveia + Banana",
+        "ingredients": ["Aveia", "Leite", "Banana"],
+        "proteins": ["laticinio"]
+    },
+    {
+        "name": "Crepioca + Peito de peru (2 fatias)",
+        "ingredients": ["Goma de tapioca", "Ovos", "Peito de peru"],
+        "proteins": ["ovo", "frango"]
+    },
+    {
+        "name": "Ovos mexidos + Queijo cottage + Cenoura",
+        "ingredients": ["Ovos", "Queijo cottage", "Cenoura"],
+        "proteins": ["ovo", "laticinio"]
+    },
+    {
+        "name": "Iogurte + Sementes de chia + Pera",
+        "ingredients": ["Iogurte natural", "Sementes de chia", "Pera"],
+        "proteins": ["laticinio", "vegetariano"]
+    },
+    {
+        "name": "Pão integral + Ricota + Manjericão",
+        "ingredients": ["Pão integral", "Ricota", "Manjericão"],
+        "proteins": ["laticinio"]
+    },
+    {
+        "name": "Cuscuz de milho + Queijo branco + Azeite",
+        "ingredients": ["Farinha de milho", "Queijo branco", "Azeite"],
+        "proteins": ["laticinio"]
+    }
 ]
