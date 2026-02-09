@@ -211,7 +211,7 @@ const UI = {
     },
 
     renderShoppingList() {
-        const aggregate = {};
+        const aggregate = {}; // Format: "IngredientName|unit" -> { qty: number, name: string, unit: string }
         const allMeals = [
             ...STATE.currentSelections.breakfast,
             ...STATE.currentSelections.lunch,
@@ -221,8 +221,29 @@ const UI = {
         for (const meal of allMeals) {
             if (!meal) continue;
             for (const ing of meal.ingredients) {
-                const normalized = UTILS.normalizeIngredientName(ing);
-                aggregate[normalized] = (aggregate[normalized] || 0) + 1;
+                // Handle both old format (string) and new format (object with qty/unit)
+                let ingName = "";
+                let ingQty = 1;
+                let ingUnit = "x";
+
+                if (typeof ing === "string") {
+                    // Old format: just ingredient name
+                    ingName = UTILS.normalizeIngredientName(ing);
+                    ingUnit = CONFIG.defaultUnitByIngredient[ingName]?.unit || "x";
+                    ingQty = CONFIG.defaultUnitByIngredient[ingName]?.qty || 1;
+                } else if (typeof ing === "object" && ing.name) {
+                    // New format: { name, qty, unit }
+                    ingName = UTILS.normalizeIngredientName(ing.name);
+                    ingQty = ing.qty || 1;
+                    ingUnit = ing.unit || "x";
+                }
+
+                // Group by ingredient name and unit to allow proper aggregation
+                const key = `${ingName}|${ingUnit}`;
+                if (!aggregate[key]) {
+                    aggregate[key] = { name: ingName, unit: ingUnit, qty: 0 };
+                }
+                aggregate[key].qty += ingQty;
             }
         }
 
@@ -230,20 +251,18 @@ const UI = {
             proteinas: {}, graos: {}, legumes: {}, frutas: {}, temperos: {}, outros: {}
         };
 
-        for (const [ing, count] of Object.entries(aggregate)) {
-            const cat = UTILS.classifyIngredient(ing);
-            categories[cat][ing] = count;
+        for (const [key, data] of Object.entries(aggregate)) {
+            const cat = UTILS.classifyIngredient(data.name);
+            categories[cat][key] = data;
         }
 
         const buildListLines = (ingMap) => {
             const lines = {};
-            for (const ing of Object.keys(ingMap)) {
-                const cfg = CONFIG.defaultUnitByIngredient[ing];
-                if (cfg) {
-                    const totalQty = cfg.qty * (ingMap[ing] || 0);
-                    lines[ing] = `${totalQty} ${cfg.unit}`;
-                } else {
-                    lines[ing] = `${ingMap[ing]} x`;
+            for (const [key, data] of Object.entries(ingMap)) {
+                // data is already { name, qty, unit }
+                if (data && typeof data === "object") {
+                    const displayQty = Math.round(data.qty * 10) / 10; // Round to 1 decimal
+                    lines[data.name] = `${displayQty} ${data.unit}`;
                 }
             }
             return lines;

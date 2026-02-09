@@ -1,182 +1,182 @@
 [
     {
         "name": "Ovos mexidos (2 un.) + Pão integral (1 fatia)",
-        "ingredients": ["Ovos", "Pão integral", "Azeite"],
+        "ingredients": [{"name": "Ovos", "qty": 2, "unit": "un."}, {"name": "Pão integral", "qty": 1, "unit": "fatia"}, {"name": "Azeite", "qty": 1, "unit": "col. sopa"}],
         "proteins": ["ovo"]
     },
     {
         "name": "Iogurte natural (1 pote) + Aveia (2 col. sopa) + Banana",
-        "ingredients": ["Iogurte natural", "Aveia", "Banana"],
+        "ingredients": [{"name": "Iogurte natural", "qty": 1, "unit": "pote"}, {"name": "Aveia", "qty": 2, "unit": "col. sopa"}, {"name": "Banana", "qty": 1, "unit": "un."}],
         "proteins": ["laticinio"]
     },
     {
         "name": "Crepioca (2 col. sopa) + Queijo branco (1 fatia)",
-        "ingredients": ["Goma de tapioca", "Ovos", "Queijo branco"],
+        "ingredients": [{"name": "Goma de tapioca", "qty": 2, "unit": "col. sopa"}, {"name": "Ovos", "qty": 1, "unit": "un."}, {"name": "Queijo branco", "qty": 1, "unit": "fatia"}],
         "proteins": ["ovo", "laticinio"]
     },
     {
         "name": "Vitamina de Leite (1 copo) + Mamão + Aveia",
-        "ingredients": ["Leite", "Mamão", "Aveia"],
+        "ingredients": [{"name": "Leite", "qty": 1, "unit": "copo"}, {"name": "Mamão", "qty": 100, "unit": "g"}, {"name": "Aveia", "qty": 1, "unit": "col. sopa"}],
         "proteins": ["laticinio"]
     },
     {
         "name": "Cuscuz de milho (pequeno) + Ovo (1 un.)",
-        "ingredients": ["Farinha de milho", "Ovo"],
+        "ingredients": [{"name": "Farinha de milho", "qty": 3, "unit": "col. sopa"}, {"name": "Ovo", "qty": 1, "unit": "un."}],
         "proteins": ["ovo"]
     },
     {
         "name": "Pão integral + Pasta de amendoim + Café",
-        "ingredients": ["Pão integral", "Pasta de amendoim", "Café"],
+        "ingredients": [{"name": "Pão integral", "qty": 2, "unit": "fatias"}, {"name": "Pasta de amendoim", "qty": 1, "unit": "col. sopa"}, {"name": "Café", "qty": 1, "unit": "xícara"}],
         "proteins": ["vegetariano"]
     },
     {
         "name": "Tapioca (2 col. sopa) + Queijo minas + Orégano",
-        "ingredients": ["Goma de tapioca", "Queijo minas"],
+        "ingredients": [{"name": "Goma de tapioca", "qty": 2, "unit": "col. sopa"}, {"name": "Queijo minas", "qty": 50, "unit": "g"}],
         "proteins": ["laticinio"]
     },
     {
         "name": "Mingau de aveia (3 col. sopa) + Canela",
-        "ingredients": ["Aveia", "Leite", "Canela"],
+        "ingredients": [{"name": "Aveia", "qty": 3, "unit": "col. sopa"}, {"name": "Leite", "qty": 1, "unit": "copo"}, {"name": "Canela", "qty": 0.5, "unit": "col. chá"}],
         "proteins": ["laticinio"]
     },
     {
         "name": "Salada de frutas + Iogurte natural",
-        "ingredients": ["Frutas variadas", "Iogurte natural"],
+        "ingredients": [{"name": "Frutas variadas", "qty": 200, "unit": "g"}, {"name": "Iogurte natural", "qty": 1, "unit": "pote"}],
         "proteins": ["laticinio"]
     },
     {
         "name": "Torrada integral + Abacate + Limão",
-        "ingredients": ["Pão integral", "Abacate", "Limão"],
+        "ingredients": [{"name": "Pão integral", "qty": 2, "unit": "fatias"}, {"name": "Abacate", "qty": 0.5, "unit": "un."}, {"name": "Limão", "qty": 0.25, "unit": "un."}],
         "proteins": ["vegetariano"]
     },
     {
         "name": "Ovos cozidos (2 un.) + Tomate + Orégano",
-        "ingredients": ["Ovos", "Tomate", "Orégano"],
+        "ingredients": [{"name": "Ovos", "qty": 2, "unit": "un."}, {"name": "Tomate", "qty": 1, "unit": "un."}, {"name": "Orégano", "qty": 0.5, "unit": "col. chá"}],
         "proteins": ["ovo"]
     },
     {
         "name": "Iogurte + Granola + Morango",
-        "ingredients": ["Iogurte natural", "Granola", "Morango"],
+        "ingredients": [{"name": "Iogurte natural", "qty": 1, "unit": "pote"}, {"name": "Granola", "qty": 3, "unit": "col. sopa"}, {"name": "Morango", "qty": 100, "unit": "g"}],
         "proteins": ["laticinio"]
     },
     {
         "name": "Tapioca + Ovo mexido + Queijo minas",
-        "ingredients": ["Goma de tapioca", "Ovos", "Queijo minas"],
+        "ingredients": [{"name": "Goma de tapioca", "qty": 2, "unit": "col. sopa"}, {"name": "Ovos", "qty": 1, "unit": "un."}, {"name": "Queijo minas", "qty": 50, "unit": "g"}],
         "proteins": ["ovo", "laticinio"]
     },
     {
         "name": "Vitamina de Leite + Banana + Sementes",
-        "ingredients": ["Leite", "Banana", "Pasta de amendoim"],
+        "ingredients": [{"name": "Leite", "qty": 1, "unit": "copo"}, {"name": "Banana", "qty": 1, "unit": "un."}, {"name": "Pasta de amendoim", "qty": 1, "unit": "col. sopa"}],
         "proteins": ["laticinio", "vegetariano"]
     },
     {
         "name": "Pão integral + Queijo branco + Café",
-        "ingredients": ["Pão integral", "Queijo branco", "Café"],
+        "ingredients": [{"name": "Pão integral", "qty": 2, "unit": "fatias"}, {"name": "Queijo branco", "qty": 1, "unit": "fatia"}, {"name": "Café", "qty": 1, "unit": "xícara"}],
         "proteins": ["laticinio"]
     },
     {
         "name": "Mingau de aveia + Banana",
-        "ingredients": ["Aveia", "Leite", "Banana"],
+        "ingredients": [{"name": "Aveia", "qty": 3, "unit": "col. sopa"}, {"name": "Leite", "qty": 1, "unit": "copo"}, {"name": "Banana", "qty": 1, "unit": "un."}],
         "proteins": ["laticinio"]
     },
     {
         "name": "Crepioca + Peito de peru (2 fatias)",
-        "ingredients": ["Goma de tapioca", "Ovos", "Peito de peru"],
+        "ingredients": [{"name": "Goma de tapioca", "qty": 2, "unit": "col. sopa"}, {"name": "Ovos", "qty": 1, "unit": "un."}, {"name": "Peito de peru", "qty": 50, "unit": "g"}],
         "proteins": ["ovo", "frango"]
     },
     {
         "name": "Ovos mexidos + Queijo cottage + Cenoura",
-        "ingredients": ["Ovos", "Queijo cottage", "Cenoura"],
+        "ingredients": [{"name": "Ovos", "qty": 2, "unit": "un."}, {"name": "Queijo cottage", "qty": 3, "unit": "col. sopa"}, {"name": "Cenoura", "qty": 50, "unit": "g"}],
         "proteins": ["ovo", "laticinio"]
     },
     {
         "name": "Iogurte + Sementes de chia + Pera",
-        "ingredients": ["Iogurte natural", "Sementes de chia", "Pera"],
+        "ingredients": [{"name": "Iogurte natural", "qty": 1, "unit": "pote"}, {"name": "Sementes de chia", "qty": 1, "unit": "col. sopa"}, {"name": "Pera", "qty": 1, "unit": "un."}],
         "proteins": ["laticinio", "vegetariano"]
     },
     {
         "name": "Pão integral + Ricota + Manjericão",
-        "ingredients": ["Pão integral", "Ricota", "Manjericão"],
+        "ingredients": [{"name": "Pão integral", "qty": 2, "unit": "fatias"}, {"name": "Ricota", "qty": 100, "unit": "g"}, {"name": "Manjericão", "qty": 1, "unit": "col. chá"}],
         "proteins": ["laticinio"]
     },
     {
         "name": "Cuscuz de milho + Queijo branco + Azeite",
-        "ingredients": ["Farinha de milho", "Queijo branco", "Azeite"],
+        "ingredients": [{"name": "Farinha de milho", "qty": 3, "unit": "col. sopa"}, {"name": "Queijo branco", "qty": 50, "unit": "g"}, {"name": "Azeite", "qty": 1, "unit": "col. chá"}],
         "proteins": ["laticinio"]
     },
     {
         "name": "Omelete (2 ovos) com Brócolis + Queijo",
-        "ingredients": ["Ovos", "Brócolis", "Queijo branco"],
+        "ingredients": [{"name": "Ovos", "qty": 2, "unit": "un."}, {"name": "Brócolis", "qty": 100, "unit": "g"}, {"name": "Queijo branco", "qty": 50, "unit": "g"}],
         "proteins": ["ovo", "laticinio"]
     },
     {
         "name": "Pão integral tostado + Ovos meigos + Cogumelo refogado",
-        "ingredients": ["Pão integral", "Ovos", "Cogumelo"],
+        "ingredients": [{"name": "Pão integral", "qty": 2, "unit": "fatias"}, {"name": "Ovos", "qty": 2, "unit": "un."}, {"name": "Cogumelo", "qty": 100, "unit": "g"}],
         "proteins": ["ovo"]
     },
     {
         "name": "Frutas vermelhas (Morango, Mirtilo) + Iogurte grego + Mel",
-        "ingredients": ["Morango", "Blueberry", "Iogurte natural", "Mel"],
+        "ingredients": [{"name": "Morango", "qty": 100, "unit": "g"}, {"name": "Blueberry", "qty": 50, "unit": "g"}, {"name": "Iogurte natural", "qty": 1, "unit": "pote"}, {"name": "Mel", "qty": 1, "unit": "col. sopa"}],
         "proteins": ["laticinio"]
     },
     {
         "name": "Banana + Iogurte natural + Granola + Mel",
-        "ingredients": ["Banana", "Iogurte natural", "Granola", "Mel"],
+        "ingredients": [{"name": "Banana", "qty": 1, "unit": "un."}, {"name": "Iogurte natural", "qty": 1, "unit": "pote"}, {"name": "Granola", "qty": 2, "unit": "col. sopa"}, {"name": "Mel", "qty": 1, "unit": "col. chá"}],
         "proteins": ["laticinio"]
     },
     {
         "name": "Ovos escalfados com Espinafre + Pão integral",
-        "ingredients": ["Ovos", "Espinafre", "Pão integral"],
+        "ingredients": [{"name": "Ovos", "qty": 2, "unit": "un."}, {"name": "Espinafre", "qty": 100, "unit": "g"}, {"name": "Pão integral", "qty": 2, "unit": "fatias"}],
         "proteins": ["ovo"]
     },
     {
         "name": "Smoothie: Leite + Banana + Morango + Aveia",
-        "ingredients": ["Leite", "Banana", "Morango", "Aveia"],
+        "ingredients": [{"name": "Leite", "qty": 1, "unit": "copo"}, {"name": "Banana", "qty": 1, "unit": "un."}, {"name": "Morango", "qty": 100, "unit": "g"}, {"name": "Aveia", "qty": 1, "unit": "col. sopa"}],
         "proteins": ["laticinio"]
     },
     {
         "name": "Tapioca com Carne seca refogada + Tomate",
-        "ingredients": ["Goma de tapioca", "Peito de peru", "Tomate"],
+        "ingredients": [{"name": "Goma de tapioca", "qty": 2, "unit": "col. sopa"}, {"name": "Peito de peru", "qty": 50, "unit": "g"}, {"name": "Tomate", "qty": 1, "unit": "un."}],
         "proteins": ["frango"]
     },
     {
         "name": "Queijo cottage (1 pote) + Frutas em calda + Castanhas",
-        "ingredients": ["Queijo cottage", "Frutas variadas", "Castanhas"],
+        "ingredients": [{"name": "Queijo cottage", "qty": 1, "unit": "pote"}, {"name": "Frutas variadas", "qty": 100, "unit": "g"}, {"name": "Castanhas", "qty": 30, "unit": "g"}],
         "proteins": ["laticinio"]
     },
     {
         "name": "Pão sírio integral + Homus + Tomate + Pepino",
-        "ingredients": ["Pão sírio", "Homus", "Tomate", "Pepino"],
+        "ingredients": [{"name": "Pão sírio", "qty": 1, "unit": "un."}, {"name": "Homus", "qty": 3, "unit": "col. sopa"}, {"name": "Tomate", "qty": 1, "unit": "un."}, {"name": "Pepino", "qty": 50, "unit": "g"}],
         "proteins": ["vegetariano"]
     },
     {
         "name": "Ovo frito + Abacate + Tomate picado",
-        "ingredients": ["Ovo", "Abacate", "Tomate"],
+        "ingredients": [{"name": "Ovo", "qty": 1, "unit": "un."}, {"name": "Abacate", "qty": 0.5, "unit": "un."}, {"name": "Tomate", "qty": 1, "unit": "un."}],
         "proteins": ["ovo"]
     },
     {
         "name": "Açaí batido com Leite + Granola + Frutas vermelhas",
-        "ingredients": ["Açaí congelado", "Leite", "Granola", "Morango"],
+        "ingredients": [{"name": "Açaí congelado", "qty": 100, "unit": "g"}, {"name": "Leite", "qty": 0.5, "unit": "copo"}, {"name": "Granola", "qty": 2, "unit": "col. sopa"}, {"name": "Morango", "qty": 50, "unit": "g"}],
         "proteins": ["laticinio"]
     },
     {
         "name": "Ovos mexidos com Cebola e Alho + Pão integral",
-        "ingredients": ["Ovos", "Cebola", "Alho", "Pão integral"],
+        "ingredients": [{"name": "Ovos", "qty": 2, "unit": "un."}, {"name": "Cebola", "qty": 0.25, "unit": "un."}, {"name": "Alho", "qty": 1, "unit": "dente"}, {"name": "Pão integral", "qty": 2, "unit": "fatias"}],
         "proteins": ["ovo"]
     },
     {
         "name": "Bebida de aveia + Framboesa + Banana + Mel",
-        "ingredients": ["Leite de aveia", "Framboesa", "Banana", "Mel"],
+        "ingredients": [{"name": "Leite de aveia", "qty": 1, "unit": "copo"}, {"name": "Framboesa", "qty": 80, "unit": "g"}, {"name": "Banana", "qty": 1, "unit": "un."}, {"name": "Mel", "qty": 1, "unit": "col. chá"}],
         "proteins": ["vegetariano"]
     },
     {
         "name": "Tapioca com Queijo derretido + Goiabada",
-        "ingredients": ["Goma de tapioca", "Queijo minas", "Goiabada"],
+        "ingredients": [{"name": "Goma de tapioca", "qty": 2, "unit": "col. sopa"}, {"name": "Queijo minas", "qty": 50, "unit": "g"}, {"name": "Goiabada", "qty": 50, "unit": "g"}],
         "proteins": ["laticinio"]
     },
     {
         "name": "Ovos com Brócolis + Queijo cottage + Café com leite",
-        "ingredients": ["Ovos", "Brócolis", "Queijo cottage", "Leite", "Café"],
+        "ingredients": [{"name": "Ovos", "qty": 2, "unit": "un."}, {"name": "Brócolis", "qty": 100, "unit": "g"}, {"name": "Queijo cottage", "qty": 3, "unit": "col. sopa"}, {"name": "Leite", "qty": 0.5, "unit": "copo"}, {"name": "Café", "qty": 1, "unit": "col. sopa"}],
         "proteins": ["ovo", "laticinio"]
     }
 ]

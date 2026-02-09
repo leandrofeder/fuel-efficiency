@@ -1,177 +1,182 @@
 [
     {
-        "name": "Fruta (Maçã/Pera) + Castanhas (5 un.)",
-        "ingredients": ["Maçã", "Castanhas"],
-        "proteins": ["vegetariano"]
-    },
-    {
-        "name": "Iogurte natural (1 pote) + Linhaça",
-        "ingredients": ["Iogurte natural", "Sementes variadas"],
+        "name": "Iogurte grego com Granola e Mel",
+        "ingredients": [{"name": "Iogurte grego", "qty": 200, "unit": "ml"}, {"name": "Granola", "qty": 3, "unit": "col. sopa"}, {"name": "Mel", "qty": 1, "unit": "col. sopa"}],
         "proteins": ["laticinio"]
     },
     {
-        "name": "Ovo cozido (1 un.) + Sal",
-        "ingredients": ["Ovo"],
+        "name": "Barra de cereais caseira com Castanhas",
+        "ingredients": [{"name": "Castanha", "qty": 30, "unit": "g"}, {"name": "Aveia", "qty": 4, "unit": "col. sopa"}, {"name": "Mel", "qty": 2, "unit": "col. sopa"}],
+        "proteins": ["vegetariano"]
+    },
+    {
+        "name": "Smoothie de Banana com Leite e Aveia",
+        "ingredients": [{"name": "Banana", "qty": 1, "unit": "un."}, {"name": "Leite", "qty": 200, "unit": "ml"}, {"name": "Aveia", "qty": 2, "unit": "col. sopa"}],
+        "proteins": ["laticinio"]
+    },
+    {
+        "name": "Maçã crocante com Manteiga de Amendoim",
+        "ingredients": [{"name": "Maçã", "qty": 1, "unit": "un."}, {"name": "Manteiga de amendoim", "qty": 2, "unit": "col. sopa"}],
+        "proteins": ["vegetariano"]
+    },
+    {
+        "name": "Queijo branco com Mel + Granola",
+        "ingredients": [{"name": "Queijo branco", "qty": 100, "unit": "g"}, {"name": "Mel", "qty": 1, "unit": "col. sopa"}, {"name": "Granola", "qty": 2, "unit": "col. sopa"}],
+        "proteins": ["laticinio"]
+    },
+    {
+        "name": "Cenoura + Melancia + Gengibre",
+        "ingredients": [{"name": "Cenoura", "qty": 2, "unit": "un."}, {"name": "Melancia", "qty": 300, "unit": "g"}, {"name": "Gengibre fresco", "qty": 5, "unit": "g"}],
+        "proteins": ["vegetariano"]
+    },
+    {
+        "name": "Sanduíche light com Peito de peru e Queijo",
+        "ingredients": [{"name": "Pão integral", "qty": 2, "unit": "fatias"}, {"name": "Peito de peru", "qty": 100, "unit": "g"}, {"name": "Queijo branco", "qty": 1, "unit": "fatia"}, {"name": "Alface", "qty": 30, "unit": "g"}],
+        "proteins": ["frango", "laticinio"]
+    },
+    {
+        "name": "Tomate com Azeite e Orégano",
+        "ingredients": [{"name": "Tomate", "qty": 2, "unit": "un."}, {"name": "Azeite", "qty": 1, "unit": "col. sopa"}, {"name": "Orégano", "qty": 0.5, "unit": "col. chá"}],
+        "proteins": ["vegetariano"]
+    },
+    {
+        "name": "Ovo cozido com Pão Integral",
+        "ingredients": [{"name": "Ovo", "qty": 1, "unit": "un."}, {"name": "Pão integral", "qty": 2, "unit": "fatias"}],
         "proteins": ["ovo"]
     },
     {
-        "name": "Queijo minas/branco + Tomate + Orégano",
-        "ingredients": ["Queijo minas", "Tomate", "Orégano"],
+        "name": "Iogurte natural com Frutas secas",
+        "ingredients": [{"name": "Iogurte natural", "qty": 150, "unit": "ml"}, {"name": "Damasco seco", "qty": 30, "unit": "g"}, {"name": "Uva passa", "qty": 20, "unit": "g"}],
         "proteins": ["laticinio"]
     },
     {
-        "name": "Pão integral + Ricota amassada",
-        "ingredients": ["Pão integral", "Ricota"],
-        "proteins": ["laticinio"]
-    },
-    {
-        "name": "Cenoura/Pepino + Homus",
-        "ingredients": ["Cenoura", "Homus"],
+        "name": "Mix de Frutas Frescas e Castanhas",
+        "ingredients": [{"name": "Morango", "qty": 150, "unit": "g"}, {"name": "Blueberry", "qty": 100, "unit": "g"}, {"name": "Amêndoa", "qty": 25, "unit": "g"}],
         "proteins": ["vegetariano"]
     },
     {
-        "name": "Banana (1 un.) + Pasta de amendoim",
-        "ingredients": ["Banana", "Pasta de amendoim"],
+        "name": "Queijo Cottage com Abacaxi",
+        "ingredients": [{"name": "Queijo cottage", "qty": 150, "unit": "g"}, {"name": "Abacaxi", "qty": 150, "unit": "g"}],
+        "proteins": ["laticinio"]
+    },
+    {
+        "name": "Bolo de banana com Canela (fatia)",
+        "ingredients": [{"name": "Banana", "qty": 1, "unit": "un."}, {"name": "Farinha de aveia", "qty": 3, "unit": "col. sopa"}, {"name": "Ovo", "qty": 1, "unit": "un."}, {"name": "Canela", "qty": 0.5, "unit": "col. chá"}],
+        "proteins": ["ovo", "vegetariano"]
+    },
+    {
+        "name": "Abacate crocante com Limão",
+        "ingredients": [{"name": "Abacate", "qty": 0.5, "unit": "un."}, {"name": "Limão", "qty": 0.25, "unit": "un."}],
         "proteins": ["vegetariano"]
     },
     {
-        "name": "Vitamina: Leite vegetal + Fruta",
-        "ingredients": ["Leite vegetal", "Banana"],
+        "name": "Mix de Nuts (Castanhas diversas)",
+        "ingredients": [{"name": "Castanha-do-pará", "qty": 15, "unit": "g"}, {"name": "Amendoim", "qty": 15, "unit": "g"}, {"name": "Noz", "qty": 15, "unit": "g"}],
         "proteins": ["vegetariano"]
     },
     {
-        "name": "Wrap integral + Frango desfiado",
-        "ingredients": ["Wrap integral", "Frango desfiado"],
-        "proteins": ["frango"]
+        "name": "Pão Integral com Cream Cheese e Salmão",
+        "ingredients": [{"name": "Pão integral", "qty": 2, "unit": "fatias"}, {"name": "Cream cheese", "qty": 2, "unit": "col. sopa"}, {"name": "Salmão defumado", "qty": 50, "unit": "g"}],
+        "proteins": ["peixe", "laticinio"]
     },
     {
-        "name": "Pudim de chia + Leite de coco",
-        "ingredients": ["Sementes de chia", "Leite de coco"],
+        "name": "Pêra com Queijo minas",
+        "ingredients": [{"name": "Pera", "qty": 1, "unit": "un."}, {"name": "Queijo minas", "qty": 1, "unit": "fatia"}],
+        "proteins": ["laticinio"]
+    },
+    {
+        "name": "Pipoca doce caseira com Mel",
+        "ingredients": [{"name": "Milho de pipoca", "qty": 2, "unit": "col. sopa"}, {"name": "Mel", "qty": 1, "unit": "col. sopa"}],
         "proteins": ["vegetariano"]
     },
     {
-        "name": "Pão integral + Ovo cozido + Café",
-        "ingredients": ["Pão integral", "Ovo", "Café"],
-        "proteins": ["ovo"]
-    },
-    {
-        "name": "Iogurte + Aveia + Mel",
-        "ingredients": ["Iogurte natural", "Aveia", "Mel"],
+        "name": "Shakes proteico caseiro com Leite",
+        "ingredients": [{"name": "Leite", "qty": 200, "unit": "ml"}, {"name": "Protein pó", "qty": 1, "unit": "colher"}, {"name": "Banana", "qty": 0.5, "unit": "un."}],
         "proteins": ["laticinio"]
     },
     {
-        "name": "Banana (1 un.) + Queijo minas",
-        "ingredients": ["Banana", "Queijo minas"],
+        "name": "Biscoito integral com Geleia e Queijo",
+        "ingredients": [{"name": "Biscoito integral", "qty": 3, "unit": "un."}, {"name": "Geleia de frutas", "qty": 1, "unit": "col. sopa"}, {"name": "Queijo branco", "qty": 1, "unit": "fatia"}],
         "proteins": ["laticinio"]
     },
     {
-        "name": "Ricota + Tomate + Orégano",
-        "ingredients": ["Ricota", "Tomate", "Orégano"],
+        "name": "Tangerina com Amendoim torrado",
+        "ingredients": [{"name": "Tangerina", "qty": 2, "unit": "un."}, {"name": "Amendoim torrado", "qty": 25, "unit": "g"}],
+        "proteins": ["vegetariano"]
+    },
+    {
+        "name": "Maçã verde com Chocolate 70%",
+        "ingredients": [{"name": "Maçã verde", "qty": 1, "unit": "un."}, {"name": "Chocolate 70%", "qty": 20, "unit": "g"}],
+        "proteins": ["vegetariano"]
+    },
+    {
+        "name": "Palito de Cenoura com Homus",
+        "ingredients": [{"name": "Cenoura", "qty": 2, "unit": "un."}, {"name": "Homus de grão-de-bico", "qty": 100, "unit": "g"}],
+        "proteins": ["vegetariano"]
+    },
+    {
+        "name": "Amendoim crocante com Uva passa",
+        "ingredients": [{"name": "Amendoim", "qty": 30, "unit": "g"}, {"name": "Uva passa", "qty": 20, "unit": "g"}],
+        "proteins": ["vegetariano"]
+    },
+    {
+        "name": "Barra de proteína caseira",
+        "ingredients": [{"name": "Aveia", "qty": 3, "unit": "col. sopa"}, {"name": "Protein pó", "qty": 1, "unit": "colher"}, {"name": "Manteiga de amendoim", "qty": 2, "unit": "col. sopa"}],
+        "proteins": ["vegetariano"]
+    },
+    {
+        "name": "Melancia com Hortelã fresca",
+        "ingredients": [{"name": "Melancia", "qty": 300, "unit": "g"}, {"name": "Hortelã", "qty": 5, "unit": "folhas"}],
+        "proteins": ["vegetariano"]
+    },
+    {
+        "name": "Pão de queijo congelado (3 unidades)",
+        "ingredients": [{"name": "Pão de queijo", "qty": 3, "unit": "un."}, {"name": "Queijo branco", "qty": 50, "unit": "g"}],
         "proteins": ["laticinio"]
     },
     {
-        "name": "Pepino + Queijo cottage",
-        "ingredients": ["Pepino", "Queijo cottage"],
+        "name": "Caju inteiro com Amêndoas",
+        "ingredients": [{"name": "Caju", "qty": 30, "unit": "g"}, {"name": "Amêndoa", "qty": 20, "unit": "g"}],
+        "proteins": ["vegetariano"]
+    },
+    {
+        "name": "Iogurte com Linhaça e Mel",
+        "ingredients": [{"name": "Iogurte natural", "qty": 150, "unit": "ml"}, {"name": "Linhaça", "qty": 1, "unit": "col. sopa"}, {"name": "Mel", "qty": 1, "unit": "col. chá"}],
         "proteins": ["laticinio"]
     },
     {
-        "name": "Wrap integral + Queijo branco",
-        "ingredients": ["Wrap integral", "Queijo branco"],
+        "name": "Banana com Chocolate em pó",
+        "ingredients": [{"name": "Banana", "qty": 1, "unit": "un."}, {"name": "Chocolate em pó", "qty": 1, "unit": "col. sopa"}],
+        "proteins": ["vegetariano"]
+    },
+    {
+        "name": "Vagem crocante com Gergelim",
+        "ingredients": [{"name": "Vagem", "qty": 100, "unit": "g"}, {"name": "Gergelim", "qty": 1, "unit": "col. sopa"}],
+        "proteins": ["vegetariano"]
+    },
+    {
+        "name": "Bolo integral de aveia com Maçã",
+        "ingredients": [{"name": "Aveia integral", "qty": 3, "unit": "col. sopa"}, {"name": "Maçã", "qty": 0.5, "unit": "un."}, {"name": "Ovo", "qty": 1, "unit": "un."}],
+        "proteins": ["ovo", "vegetariano"]
+    },
+    {
+        "name": "Polvilho caseiro com Alho",
+        "ingredients": [{"name": "Polvilho", "qty": 50, "unit": "g"}, {"name": "Alho", "qty": 2, "unit": "dentes"}, {"name": "Sal", "qty": 1, "unit": "pitada"}],
+        "proteins": ["vegetariano"]
+    },
+    {
+        "name": "Abacaxi fresco com Limão",
+        "ingredients": [{"name": "Abacaxi", "qty": 200, "unit": "g"}, {"name": "Limão", "qty": 0.25, "unit": "un."}],
+        "proteins": ["vegetariano"]
+    },
+    {
+        "name": "Cereal integral com Leite semidesnatado",
+        "ingredients": [{"name": "Cereal integral", "qty": 30, "unit": "g"}, {"name": "Leite semidesnatado", "qty": 200, "unit": "ml"}],
         "proteins": ["laticinio"]
     },
     {
-        "name": "Vitamina: Leite + Morango",
-        "ingredients": ["Leite", "Morango"],
-        "proteins": ["laticinio"]
-    },
-    {
-        "name": "Ovo mexido + Pão integral",
-        "ingredients": ["Ovo", "Pão integral"],
-        "proteins": ["ovo"]
-    },
-    {
-        "name": "Iogurte + Castanhas",
-        "ingredients": ["Iogurte natural", "Castanhas"],
+        "name": "Pastel caseiro com Queijo e Brócolis",
+        "ingredients": [{"name": "Massa folhada", "qty": 100, "unit": "g"}, {"name": "Queijo branco", "qty": 50, "unit": "g"}, {"name": "Brócolis", "qty": 80, "unit": "g"}],
         "proteins": ["laticinio", "vegetariano"]
-    },
-    {
-        "name": "Pão integral + Peito de peru",
-        "ingredients": ["Pão integral", "Peito de peru"],
-        "proteins": ["frango"]
-    },
-    {
-        "name": "Maçã + Amendoim natural",
-        "ingredients": ["Maçã", "Amendoim natural"],
-        "proteins": ["vegetariano"]
-    },
-    {
-        "name": "Iogurte Grego + Mel + Nozes",
-        "ingredients": ["Iogurte natural", "Mel", "Castanhas"],
-        "proteins": ["laticinio"]
-    },
-    {
-        "name": "Queijo cottage + Morango + Mel",
-        "ingredients": ["Queijo cottage", "Morango", "Mel"],
-        "proteins": ["laticinio"]
-    },
-    {
-        "name": "Frutas frescas (Melancia, Melão) + Banana",
-        "ingredients": ["Melancia", "Melão", "Banana"],
-        "proteins": ["vegetariano"]
-    },
-    {
-        "name": "Batata-doce cozida + Caldo de Frango leve",
-        "ingredients": ["Batata-doce", "Peito de peru"],
-        "proteins": ["frango"]
-    },
-    {
-        "name": "Bolo de cenoura integral (1 fatia) + Café",
-        "ingredients": ["Cenoura", "Pão integral", "Café"],
-        "proteins": ["vegetariano"]
-    },
-    {
-        "name": "Barra de Proteína caseira + Chá",
-        "ingredients": ["Aveia", "Mel", "Castanhas", "Chá"],
-        "proteins": ["vegetariano"]
-    },
-    {
-        "name": "Gelatina diet com Frutas vermelhas",
-        "ingredients": ["Gelatina", "Morango", "Framboesa"],
-        "proteins": ["laticinio"]
-    },
-    {
-        "name": "Pão sírio + Homus + Cenoura discos",
-        "ingredients": ["Pão sírio", "Homus", "Cenoura"],
-        "proteins": ["vegetariano"]
-    },
-    {
-        "name": "Ovos em geleia (gelatina) + Chá verde",
-        "ingredients": ["Gelatina", "Ovo", "Chá"],
-        "proteins": ["ovo", "laticinio"]
-    },
-    {
-        "name": "Iogurte com Granola + Frutas secas",
-        "ingredients": ["Iogurte natural", "Granola", "Frutas secas"],
-        "proteins": ["laticinio"]
-    },
-    {
-        "name": "Broa de milho pequena + Queijo fresco",
-        "ingredients": ["Broa de milho", "Queijo minas"],
-        "proteins": ["laticinio"]
-    },
-    {
-        "name": "Smoothie: Leite + Morango + Banana + Aveia",
-        "ingredients": ["Leite", "Morango", "Banana", "Aveia"],
-        "proteins": ["laticinio"]
-    },
-    {
-        "name": "Fruta (Laranja, Tangerina) + Castanha do pará",
-        "ingredients": ["Laranja", "Castanha do pará"],
-        "proteins": ["vegetariano"]
-    },
-    {
-        "name": "Bolo de milho integral pequeno + Café com leite",
-        "ingredients": ["Farinha de milho", "Leite", "Café"],
-        "proteins": ["laticinio"]
     }
 ]
