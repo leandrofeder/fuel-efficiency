@@ -3,8 +3,227 @@ const CACHE = {
     COMPARADOR: 'fuel_comparador',
     TRAJETO: 'fuel_trajeto',
     ECONOMIA: 'fuel_economia',
-    HISTORICO: 'fuel_historico'
+    HISTORICO: 'fuel_historico',
+    TEMA: 'fuel_tema',
+    COMBUSTIVEIS: 'fuel_combustiveis_selecionados'
 };
+
+// ==================== PWA - INSTALAÇÃO ====================
+let deferredPrompt = null;
+let isAppInstalled = false;
+
+// Registrar Service Worker
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js')
+            .then((registration) => {
+                console.log('Service Worker registrado:', registration);
+            })
+            .catch((error) => {
+                console.log('Erro ao registrar Service Worker:', error);
+            });
+    });
+}
+
+// Capturar evento beforeinstallprompt
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    console.log('App pode ser instalado');
+
+    // Mostrar botão de instalação se estiver na aba de configurações
+    const installBtn = document.getElementById('install-btn');
+    const installStatus = document.getElementById('install-status');
+    if (installBtn && installStatus) {
+        installBtn.style.display = 'flex';
+        installStatus.textContent = '✓ Pronto para instalar';
+        installStatus.className = 'install-status success';
+    }
+});
+
+// Detectar se app foi instalado
+window.addEventListener('appinstalled', () => {
+    deferredPrompt = null;
+    isAppInstalled = true;
+    console.log('App instalado com sucesso');
+
+    const installBtn = document.getElementById('install-btn');
+    const installStatus = document.getElementById('install-status');
+    if (installBtn && installStatus) {
+        installBtn.style.display = 'none';
+        installStatus.textContent = '✓ App instalado!';
+        installStatus.className = 'install-status success';
+    }
+
+    showToast('📲 App instalado com sucesso!');
+});
+
+// Verificar se está rodando como PWA
+if (window.matchMedia('(display-mode: standalone)').matches ||
+    window.navigator.standalone === true) {
+    isAppInstalled = true;
+}
+
+// Função para instalar app
+function instalarApp() {
+    const installStatus = document.getElementById('install-status');
+
+    if (!deferredPrompt) {
+        if (isAppInstalled) {
+            if (installStatus) {
+                installStatus.textContent = '✓ App já está instalado';
+                installStatus.className = 'install-status success';
+            }
+            showToast('✓ App já está instalado');
+        } else {
+            if (installStatus) {
+                installStatus.textContent = '⚠️ Instalação não disponível. Use o menu do navegador.';
+                installStatus.className = 'install-status error';
+            }
+            showToast('⚠️ Use o menu do navegador para instalar');
+        }
+        return;
+    }
+
+    deferredPrompt.prompt();
+
+    deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+            console.log('Usuário aceitou instalar');
+            if (installStatus) {
+                installStatus.textContent = '✓ Instalando...';
+                installStatus.className = 'install-status success';
+            }
+        } else {
+            console.log('Usuário recusou instalar');
+            if (installStatus) {
+                installStatus.textContent = 'Instalação cancelada';
+                installStatus.className = 'install-status';
+            }
+        }
+        deferredPrompt = null;
+    });
+}
+
+// ==================== TEMA CLARO/ESCURO ====================
+function initTheme() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeColorMeta = document.getElementById('theme-color');
+
+    if (!themeToggle) return;
+
+    // Carregar tema salvo
+    const temaSalvo = carregarDoLocalStorage(CACHE.TEMA);
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const isDark = temaSalvo === 'dark' || (!temaSalvo && prefersDark);
+
+    // Aplicar tema inicial
+    if (isDark) {
+        document.body.classList.add('dark-theme');
+        themeToggle.checked = true;
+        if (themeColorMeta) themeColorMeta.content = '#2d2d44';
+    } else {
+        document.body.classList.add('light-theme');
+        if (themeColorMeta) themeColorMeta.content = '#667eea';
+    }
+
+    // Listener para toggle
+    themeToggle.addEventListener('change', () => {
+        const isDarkMode = themeToggle.checked;
+
+        if (isDarkMode) {
+            document.body.classList.remove('light-theme');
+            document.body.classList.add('dark-theme');
+            salvarNoLocalStorage(CACHE.TEMA, 'dark');
+            if (themeColorMeta) themeColorMeta.content = '#2d2d44';
+            showToast('🌙 Tema escuro ativado');
+        } else {
+            document.body.classList.remove('dark-theme');
+            document.body.classList.add('light-theme');
+            salvarNoLocalStorage(CACHE.TEMA, 'light');
+            if (themeColorMeta) themeColorMeta.content = '#667eea';
+            showToast('☀️ Tema claro ativado');
+        }
+    });
+}
+
+// ==================== SELEÇÃO DE COMBUSTÍVEIS ====================
+const COMBUSTIVEIS_DISPONIVEIS = ['gasolina', 'etanol', 'diesel', 'gnv'];
+
+function initCombustiveis() {
+    // Carregar combustíveis selecionados
+    const selecionados = carregarDoLocalStorage(CACHE.COMBUSTIVEIS) || COMBUSTIVEIS_DISPONIVEIS;
+
+    // Atualizar checkboxes
+    COMBUSTIVEIS_DISPONIVEIS.forEach(fuel => {
+        const checkbox = document.getElementById(`fuel-${fuel}`);
+        if (checkbox) {
+            checkbox.checked = selecionados.includes(fuel);
+        }
+    });
+
+    // Aplicar filtro inicial
+    filtrarCombustiveis(selecionados);
+}
+
+function salvarCombustiveisSelecionados() {
+    const selecionados = [];
+
+    COMBUSTIVEIS_DISPONIVEIS.forEach(fuel => {
+        const checkbox = document.getElementById(`fuel-${fuel}`);
+        if (checkbox && checkbox.checked) {
+            selecionados.push(fuel);
+        }
+    });
+
+    if (selecionados.length === 0) {
+        showToast('⚠️ Selecione pelo menos um combustível');
+        return;
+    }
+
+    salvarNoLocalStorage(CACHE.COMBUSTIVEIS, selecionados);
+    filtrarCombustiveis(selecionados);
+    showToast(`✓ ${selecionados.length} combustível(s) selecionado(s)`);
+}
+
+function filtrarCombustiveis(selecionados) {
+    // Esconder/mostrar cards nos grids de combustível
+    COMBUSTIVEIS_DISPONIVEIS.forEach(fuel => {
+        const isSelecionado = selecionados.includes(fuel);
+
+        // Selecionar todos os cards deste combustível
+        const cards = document.querySelectorAll(`.fuel-card:has(.fuel-card-header h3)`);
+
+        cards.forEach(card => {
+            const titulo = card.querySelector('.fuel-card-header h3');
+            if (titulo) {
+                const tituloLower = titulo.textContent.toLowerCase();
+                if (tituloLower.includes(fuel === 'gnv' ? 'gnv' : fuel)) {
+                    card.style.display = isSelecionado ? 'block' : 'none';
+                }
+            }
+        });
+    });
+
+    // Ajustar grid quando houver menos itens
+    ajustarGridCombustiveis(selecionados.length);
+}
+
+function ajustarGridCombustiveis(quantidade) {
+    const grids = document.querySelectorAll('.fuel-grid');
+    grids.forEach(grid => {
+        if (quantidade === 1) {
+            grid.style.gridTemplateColumns = '1fr';
+        } else if (quantidade === 2) {
+            grid.style.gridTemplateColumns = 'repeat(2, 1fr)';
+        } else if (quantidade === 3) {
+            grid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(160px, 1fr))';
+        } else {
+            grid.style.gridTemplateColumns = '';
+        }
+    });
+}
+
 
 // ==================== UTILITÁRIOS ==================== 
 function showToast(msg, duration = 3000) {
@@ -62,7 +281,7 @@ function restaurarCampos() {
         const idaVoltaCheckbox = document.getElementById('ida-volta');
         if (distanciaInput) distanciaInput.value = dadosTrajeto.distancia || '';
         if (idaVoltaCheckbox) idaVoltaCheckbox.checked = dadosTrajeto.idaVolta || false;
-        
+
         Object.keys(dadosTrajeto).forEach(fuel => {
             if (fuel !== 'distancia' && fuel !== 'idaVolta') {
                 const consumoInput = document.getElementById(`consumo-trajeto-${fuel}`);
@@ -412,6 +631,19 @@ document.addEventListener('DOMContentLoaded', () => {
     restaurarCampos();
     carregarHistorico();
     atualizarDistancia();
+    initTheme();
+    initCombustiveis();
+    
+    // Verificar status de instalação PWA
+    const installBtn = document.getElementById('install-btn');
+    const installStatus = document.getElementById('install-status');
+    if (isAppInstalled && installBtn && installStatus) {
+        installBtn.style.display = 'none';
+        installStatus.textContent = '✓ App instalado';
+        installStatus.className = 'install-status success';
+    } else if (!deferredPrompt && installBtn && installStatus) {
+        installStatus.textContent = 'Use o menu do navegador para instalar';
+    }
 
     // Salvar automaticamente
     document.querySelectorAll('input').forEach(input => {

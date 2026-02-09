@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#667eea">
+    <meta name="theme-color" content="#667eea" id="theme-color">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Fuel Calc">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Fuel Calc">
     <title>⛽ Fuel Calc - Calculadora de Combustível</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>⛽</text></svg>">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icon-192.svg">
+
 </head>
+
 <body>
     <!-- NOTIFICAÇÃO TOAST -->
     <div id="toast" class="toast"></div>
@@ -43,7 +51,12 @@
                 <span class="tab-icon">📋</span>
                 <span class="tab-label">Histórico</span>
             </button>
+            <button class="tab-btn" data-tab="configuracoes">
+                <span class="tab-icon">⚙️</span>
+                <span class="tab-label">Ajustes</span>
+            </button>
         </div>
+
 
         <!-- CONTEÚDO DAS ABAS -->
         <div class="content-area">
@@ -364,8 +377,96 @@
                     <p class="empty-state">Nenhum cálculo salvo ainda</p>
                 </div>
             </section>
+
+            <!-- ABA 5: CONFIGURAÇÕES -->
+            <section class="tab-pane" id="configuracoes">
+                <div class="section-header">
+                    <h2>Configurações</h2>
+                    <p>Personalize sua experiência</p>
+                </div>
+
+                <!-- TEMA -->
+                <div class="settings-card">
+                    <div class="settings-header">
+                        <span class="settings-icon">🎨</span>
+                        <h3>Tema</h3>
+                    </div>
+                    <div class="theme-toggle-container">
+                        <span class="theme-label">☀️ Claro</span>
+                        <label class="theme-switch">
+                            <input type="checkbox" id="theme-toggle">
+                            <span class="theme-slider"></span>
+                        </label>
+                        <span class="theme-label">🌙 Escuro</span>
+                    </div>
+                </div>
+
+                <!-- COMBUSTÍVEIS -->
+                <div class="settings-card">
+                    <div class="settings-header">
+                        <span class="settings-icon">⛽</span>
+                        <h3>Combustíveis</h3>
+                    </div>
+                    <p class="settings-description">Selecione os combustíveis que deseja usar nos cálculos:</p>
+                    <div class="fuel-selection">
+                        <label class="fuel-checkbox">
+                            <input type="checkbox" id="fuel-gasolina" value="gasolina" checked>
+                            <span class="fuel-check-icon">⚫</span>
+                            <span class="fuel-check-label">Gasolina</span>
+                        </label>
+                        <label class="fuel-checkbox">
+                            <input type="checkbox" id="fuel-etanol" value="etanol" checked>
+                            <span class="fuel-check-icon">🟢</span>
+                            <span class="fuel-check-label">Etanol</span>
+                        </label>
+                        <label class="fuel-checkbox">
+                            <input type="checkbox" id="fuel-diesel" value="diesel" checked>
+                            <span class="fuel-check-icon">🔵</span>
+                            <span class="fuel-check-label">Diesel</span>
+                        </label>
+                        <label class="fuel-checkbox">
+                            <input type="checkbox" id="fuel-gnv" value="gnv" checked>
+                            <span class="fuel-check-icon">⚪</span>
+                            <span class="fuel-check-label">GNV</span>
+                        </label>
+                    </div>
+                    <button class="btn btn-primary btn-block" onclick="salvarCombustiveisSelecionados()" style="margin-top: 16px;">
+                        💾 Salvar Combustíveis
+                    </button>
+                </div>
+
+                <!-- PWA - INSTALAR APP -->
+                <div class="settings-card" id="pwa-install-card">
+                    <div class="settings-header">
+                        <span class="settings-icon">📱</span>
+                        <h3>Instalar Aplicativo</h3>
+                    </div>
+                    <p class="settings-description">Adicione o Fuel Calc à tela inicial do seu celular para acesso rápido:</p>
+                    <button class="btn btn-primary btn-block" id="install-btn" onclick="instalarApp()">
+                        📲 Adicionar à Tela Inicial
+                    </button>
+                    <p class="install-status" id="install-status"></p>
+                </div>
+
+                <!-- INFO -->
+                <div class="settings-card">
+                    <div class="settings-header">
+                        <span class="settings-icon">ℹ️</span>
+                        <h3>Sobre</h3>
+                    </div>
+                    <div class="about-info">
+                        <p><strong>⛽ Fuel Calc</strong></p>
+                        <p>Versão 1.0</p>
+                        <p>Calcule e economize no combustível do seu veículo</p>
+                        <p style="margin-top: 12px; font-size: 12px; color: var(--gray);">
+                            © 2026 Fuel Calc
+                        </p>
+                    </div>
+                </div>
+            </section>
         </div>
     </main>
+
 
     <!-- FOOTER -->
     <footer class="footer">
@@ -374,4 +475,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>

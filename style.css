@@ -1,4 +1,5 @@
 /* ==================== RESET & BASES ==================== */
+
 * {
     margin: 0;
     padding: 0;
@@ -18,16 +19,12 @@
     --gray: #8b92a6;
     --gray-light: #f1f3f5;
     --white: #ffffff;
-    
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.12);
     --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);
-    
     --radius: 16px;
     --radius-sm: 8px;
-    
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    
     --safe-top: env(safe-area-inset-top);
     --safe-bottom: env(safe-area-inset-bottom);
 }
@@ -58,7 +55,9 @@ body::before {
     z-index: 0;
 }
 
+
 /* ==================== HEADER ==================== */
+
 .header {
     background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
     color: var(--white);
@@ -82,8 +81,13 @@ body::before {
 }
 
 @keyframes float {
-    0%, 100% { transform: translate(0, 0); }
-    50% { transform: translate(30px, -30px); }
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(30px, -30px);
+    }
 }
 
 .header-decoration {
@@ -117,7 +121,9 @@ body::before {
     letter-spacing: 0.3px;
 }
 
+
 /* ==================== MAIN CONTAINER ==================== */
+
 .main-container {
     position: relative;
     z-index: 1;
@@ -127,7 +133,9 @@ body::before {
     padding-bottom: var(--safe-bottom);
 }
 
+
 /* ==================== TABS ==================== */
+
 .tabs-container {
     display: flex;
     gap: 4px;
@@ -187,7 +195,9 @@ body::before {
     font-weight: 600;
 }
 
+
 /* ==================== CONTENT AREA ==================== */
+
 .content-area {
     flex: 1;
     padding: 20px;
@@ -216,7 +226,9 @@ body::before {
     }
 }
 
+
 /* ==================== SECTION HEADER ==================== */
+
 .section-header {
     margin-bottom: 24px;
 }
@@ -235,7 +247,9 @@ body::before {
     font-weight: 400;
 }
 
+
 /* ==================== FUEL GRID ==================== */
+
 .fuel-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -255,7 +269,9 @@ body::before {
     }
 }
 
+
 /* ==================== FUEL CARD ==================== */
+
 .fuel-card {
     background: var(--white);
     border-radius: var(--radius);
@@ -367,7 +383,9 @@ body::before {
     }
 }
 
+
 /* ==================== DISTANCE SECTION ==================== */
+
 .distance-section {
     background: var(--white);
     border-radius: var(--radius);
@@ -456,7 +474,9 @@ body::before {
     font-variant-numeric: tabular-nums;
 }
 
+
 /* ==================== BUTTONS ==================== */
+
 .btn {
     padding: 12px 20px;
     border: none;
@@ -521,7 +541,9 @@ body::before {
     width: 100%;
 }
 
+
 /* ==================== RESULT BOX ==================== */
+
 .result-box {
     background: var(--white);
     border-radius: var(--radius);
@@ -553,7 +575,9 @@ body::before {
     text-align: center;
 }
 
+
 /* ==================== HISTORY ==================== */
+
 .history-controls {
     display: flex;
     gap: 10px;
@@ -615,7 +639,9 @@ body::before {
     font-size: 14px;
 }
 
+
 /* ==================== TOAST NOTIFICATION ==================== */
+
 .toast {
     position: fixed;
     bottom: calc(20px + var(--safe-bottom));
@@ -637,7 +663,9 @@ body::before {
     display: block;
 }
 
+
 /* ==================== FOOTER ==================== */
+
 .footer {
     text-align: center;
     padding: 16px 20px calc(16px + var(--safe-bottom));
@@ -647,28 +675,25 @@ body::before {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+
 /* ==================== RESPONSIVIDADE ==================== */
+
 @media (max-width: 768px) {
     .header-title {
         font-size: 28px;
     }
-
     .section-header h2 {
         font-size: 20px;
     }
-
     .tab-label {
         display: none;
     }
-
     .tab-btn {
         padding: 10px;
     }
-
     .content-area {
         padding: 16px;
     }
-
     .fuel-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
@@ -679,73 +704,57 @@ body::before {
     .header-title {
         font-size: 24px;
     }
-
     .header-subtitle {
         font-size: 12px;
     }
-
     .section-header h2 {
         font-size: 18px;
     }
-
     .section-header p {
         font-size: 12px;
     }
-
     .content-area {
         padding: 12px;
     }
-
     .fuel-card {
         padding: 12px;
     }
-
     .fuel-grid {
         grid-template-columns: 1fr;
         gap: 12px;
     }
-
     .fuel-card-header h3 {
         font-size: 14px;
     }
-
     .result-value {
         font-size: 16px;
     }
-
     .btn {
         padding: 12px 16px;
         font-size: 13px;
     }
-
     .distance-display {
         padding: 12px;
         font-size: 14px;
     }
-
     .distance-value {
         font-size: 18px;
     }
-
     .input-group input {
         padding: 10px;
         font-size: 16px;
     }
-
     .tab-btn {
         padding: 8px;
         font-size: 10px;
     }
-
     .tab-icon {
         font-size: 18px;
     }
-
     .history-item {
         flex-direction: column;
         align-items: flex-start;
     }
-
     .history-item-value {
         margin-top: 8px;
     }
@@ -755,49 +764,348 @@ body::before {
     .header-title {
         font-size: 20px;
     }
-
     .tab-btn {
         padding: 6px;
         gap: 2px;
     }
-
     .tab-icon {
         font-size: 16px;
     }
-
     .fuel-card {
         padding: 10px;
     }
-
     .input-group label {
         font-size: 11px;
     }
-
     .btn {
         font-size: 12px;
         padding: 10px 14px;
     }
 }
 
-/* ==================== DARK MODE (opcional) ==================== */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --white: #1a1a2e;
-        --gray-light: #2d2d44;
-    }
 
-    .fuel-card {
-        background: var(--dark-light);
+/* ==================== SETTINGS CARD ==================== */
+
+.settings-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow-md);
+    animation: slideUp 0.4s ease;
+}
+
+.settings-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--gray-light);
+}
+
+.settings-icon {
+    font-size: 24px;
+}
+
+.settings-header h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.settings-description {
+    font-size: 14px;
+    color: var(--gray);
+    margin-bottom: 16px;
+    line-height: 1.5;
+}
+
+
+/* ==================== THEME TOGGLE ==================== */
+
+.theme-toggle-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 16px;
+    background: var(--gray-light);
+    border-radius: var(--radius-sm);
+}
+
+.theme-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 32px;
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.theme-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    transition: var(--transition);
+    border-radius: 32px;
+}
+
+.theme-slider:before {
+    position: absolute;
+    content: "☀️";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 26px;
+    width: 26px;
+    left: 3px;
+    bottom: 3px;
+    background: white;
+    transition: var(--transition);
+    border-radius: 50%;
+    font-size: 14px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.theme-switch input:checked+.theme-slider {
+    background: linear-gradient(135deg, #2d2d44 0%, #1a1a2e 100%);
+}
+
+.theme-switch input:checked+.theme-slider:before {
+    transform: translateX(28px);
+    content: "🌙";
+}
+
+
+/* ==================== FUEL SELECTION ==================== */
+
+.fuel-selection {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.fuel-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    background: var(--gray-light);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: var(--transition);
+    border: 2px solid transparent;
+}
+
+.fuel-checkbox:hover {
+    background: #e8e8f0;
+    transform: translateY(-2px);
+}
+
+.fuel-checkbox input {
+    display: none;
+}
+
+.fuel-checkbox input:checked+.fuel-check-icon+.fuel-check-label {
+    font-weight: 700;
+}
+
+.fuel-checkbox:has(input:checked) {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    border-color: var(--primary);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+}
+
+.fuel-check-icon {
+    font-size: 24px;
+}
+
+.fuel-check-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--dark);
+}
+
+
+/* ==================== PWA INSTALL ==================== */
+
+.install-status {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--gray);
+    min-height: 20px;
+}
+
+.install-status.success {
+    color: var(--success);
+    font-weight: 600;
+}
+
+.install-status.error {
+    color: var(--danger);
+}
+
+
+/* ==================== ABOUT INFO ==================== */
+
+.about-info {
+    text-align: center;
+    padding: 16px;
+    background: var(--gray-light);
+    border-radius: var(--radius-sm);
+}
+
+.about-info p {
+    font-size: 14px;
+    color: var(--dark);
+    margin-bottom: 4px;
+}
+
+
+/* ==================== DARK THEME ==================== */
+
+body.dark-theme {
+    background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
+}
+
+body.dark-theme .header {
+    background: linear-gradient(135deg, #2d2d44 0%, #1a1a2e 100%);
+}
+
+body.dark-theme .tabs-container {
+    background: #2d2d44;
+}
+
+body.dark-theme .tab-btn {
+    color: #8b92a6;
+}
+
+body.dark-theme .tab-btn:hover {
+    background: #3d3d54;
+    color: var(--primary-light);
+}
+
+body.dark-theme .tab-btn.active {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: var(--white);
+}
+
+body.dark-theme .fuel-card,
+body.dark-theme .settings-card,
+body.dark-theme .distance-section,
+body.dark-theme .result-box {
+    background: #2d2d44;
+    color: var(--white);
+}
+
+body.dark-theme .fuel-card-header h3,
+body.dark-theme .settings-header h3,
+body.dark-theme .section-header h2 {
+    color: var(--white);
+}
+
+body.dark-theme .input-group input,
+body.dark-theme .distance-input-group input {
+    background: #3d3d54;
+    color: var(--white);
+    border-color: #4d4d64;
+}
+
+body.dark-theme .input-group input::placeholder {
+    color: #6b6b8a;
+}
+
+body.dark-theme .input-group label,
+body.dark-theme .distance-input-group label,
+body.dark-theme .settings-description,
+body.dark-theme .fuel-check-label,
+body.dark-theme .theme-label,
+body.dark-theme .checkbox-group span {
+    color: #b0b8c8;
+}
+
+body.dark-theme .fuel-result,
+body.dark-theme .checkbox-group,
+body.dark-theme .theme-toggle-container,
+body.dark-theme .about-info {
+    background: #3d3d54;
+}
+
+body.dark-theme .result-label {
+    color: #8b92a6;
+}
+
+body.dark-theme .fuel-checkbox {
+    background: #3d3d54;
+}
+
+body.dark-theme .fuel-checkbox:hover {
+    background: #4d4d64;
+}
+
+body.dark-theme .history-item {
+    background: #2d2d44;
+}
+
+body.dark-theme .history-item-title {
+    color: var(--white);
+}
+
+body.dark-theme .empty-state {
+    color: #8b92a6;
+}
+
+body.dark-theme .footer {
+    color: rgba(255, 255, 255, 0.6);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+
+/* ==================== DARK MODE (media query fallback) ==================== */
+
+@media (prefers-color-scheme: dark) {
+    body:not(.light-theme) {
+        background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
+    }
+    body:not(.light-theme) .header {
+        background: linear-gradient(135deg, #2d2d44 0%, #1a1a2e 100%);
+    }
+    body:not(.light-theme) .tabs-container {
+        background: #2d2d44;
+    }
+    body:not(.light-theme) .fuel-card,
+    body:not(.light-theme) .settings-card,
+    body:not(.light-theme) .distance-section,
+    body:not(.light-theme) .result-box {
+        background: #2d2d44;
         color: var(--white);
     }
-
-    .input-group input {
+    body:not(.light-theme) .fuel-card-header h3,
+    body:not(.light-theme) .settings-header h3 {
+        color: var(--white);
+    }
+    body:not(.light-theme) .input-group input {
         background: #3d3d54;
         color: var(--white);
         border-color: #4d4d64;
     }
-
-    .fuel-result {
-        background: rgba(0, 0, 0, 0.3);
+    body:not(.light-theme) .fuel-result {
+        background: #3d3d54;
     }
 }
