@@ -1,252 +1,377 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Planner semanal saudável com cardápio inteligente e lista de compras dinâmica" />
-    <title>Planner Semanal Saudável</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>⛽ Fuel Calc - Calculadora de Combustível</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>⛽</text></svg>">
 </head>
-
 <body>
-    <div class="container">
-        <div class="action-buttons">
-            <button class="print-btn" onclick="window.print()">🖨️ Imprimir / PDF</button>
-            <button class="share-btn" onclick="SHARE.openModal()">📱 Compartilhar</button>
+    <!-- NOTIFICAÇÃO TOAST -->
+    <div id="toast" class="toast"></div>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-content">
+            <h1 class="header-title">⛽ Fuel Calc</h1>
+            <p class="header-subtitle">Calcule seu combustível</p>
+        </div>
+        <div class="header-decoration"></div>
+    </header>
+
+    <!-- CONTAINER PRINCIPAL -->
+    <main class="main-container">
+        <!-- NAVEGAÇÃO ABAS -->
+        <div class="tabs-container">
+            <button class="tab-btn active" data-tab="comparador">
+                <span class="tab-icon">⚖️</span>
+                <span class="tab-label">Comparar</span>
+            </button>
+            <button class="tab-btn" data-tab="trajeto">
+                <span class="tab-icon">🛣️</span>
+                <span class="tab-label">Trajeto</span>
+            </button>
+            <button class="tab-btn" data-tab="economia">
+                <span class="tab-icon">💰</span>
+                <span class="tab-label">Economia</span>
+            </button>
+            <button class="tab-btn" data-tab="historico">
+                <span class="tab-icon">📋</span>
+                <span class="tab-label">Histórico</span>
+            </button>
         </div>
 
-        <!-- PÁGINA 1: CARDÁPIO SEMANAL -->
-        <div class="page">
-            <div class="header">
-                <h1>📅 Cardápio Semanal</h1>
-                <p>Refeições equilibradas para uma semana saudável</p>
-            </div>
-
-            <div class="prep-section">
-                <h3>🍗 Proteínas Desejadas:</h3>
-                <div id="protein-selector">
-                    <label>
-                        <input type="checkbox" class="protein-checkbox" value="ovo" checked> 🥚 Ovo
-                    </label>
-                    <label>
-                        <input type="checkbox" class="protein-checkbox" value="laticinio" checked> 🥛 Laticínios
-                    </label>
-                    <label>
-                        <input type="checkbox" class="protein-checkbox" value="frango" checked> 🍗 Frango
-                    </label>
-                    <label>
-                        <input type="checkbox" class="protein-checkbox" value="bovina" checked> 🥩 Carne Bovina
-                    </label>
-                    <label>
-                        <input type="checkbox" class="protein-checkbox" value="porco" checked> 🐷 Carne Suína
-                    </label>
-                    <label>
-                        <input type="checkbox" class="protein-checkbox" value="peixe" checked> 🐟 Peixe
-                    </label>
-                    <label>
-                        <input type="checkbox" class="protein-checkbox" value="vegetariano" checked> 🌱 Vegetariano
-                    </label>
-                </div>
-            </div>
-
-            <div class="meals-grid">
-                <!-- CAFÉ DA MANHÃ -->
-                <div class="meal-section" data-meal-type="breakfast">
-                    <div class="meal-title breakfast-title">☕ Café</div>
-                    <div class="day-card">
-                        <div class="day-name">Seg</div>
-                        <div class="day-meal">Pão integral + queijo branco + café</div>
-                        <button class="swap-btn" title="Trocar este café">🔄</button>
-                    </div>
-                    <div class="day-card">
-                        <div class="day-name">Ter</div>
-                        <div class="day-meal">Omelete com legumes + suco de laranja</div>
-                        <button class="swap-btn" title="Trocar este café">🔄</button>
-                    </div>
-                    <div class="day-card">
-                        <div class="day-name">Qua</div>
-                        <div class="day-meal">Iogurte + granola + banana</div>
-                        <button class="swap-btn" title="Trocar este café">🔄</button>
-                    </div>
-                    <div class="day-card">
-                        <div class="day-name">Qui</div>
-                        <div class="day-meal">Tapioca com queijo + vitamina de frutas</div>
-                        <button class="swap-btn" title="Trocar este café">🔄</button>
-                    </div>
-                    <div class="day-card">
-                        <div class="day-name">Sex</div>
-                        <div class="day-meal">Pão integral + pasta de amendoim</div>
-                        <button class="swap-btn" title="Trocar este café">🔄</button>
-                    </div>
+        <!-- CONTEÚDO DAS ABAS -->
+        <div class="content-area">
+            <!-- ABA 1: COMPARADOR -->
+            <section class="tab-pane active" id="comparador">
+                <div class="section-header">
+                    <h2>Qual combustível compensa?</h2>
+                    <p>Compare preço e consumo</p>
                 </div>
 
-                <!-- ALMOÇO -->
-                <div class="meal-section" data-meal-type="lunch">
-                    <div class="meal-title lunch-title">🍽️ Almoço</div>
-                    <div class="day-card">
-                        <div class="day-name">Seg</div>
-                        <div class="day-meal">Frango grelhado + arroz + feijão + brócolis</div>
-                        <button class="swap-btn" title="Trocar este almoço">🔄</button>
+                <div class="fuel-grid">
+                    <!-- GASOLINA -->
+                    <div class="fuel-card">
+                        <div class="fuel-card-header">
+                            <span class="fuel-icon">⚫</span>
+                            <h3>Gasolina</h3>
+                        </div>
+                        <div class="fuel-card-inputs">
+                            <div class="input-group">
+                                <label>Preço (R$/L)</label>
+                                <input type="number" id="preco-gasolina" placeholder="5.50" step="0.01" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label>Consumo (km/L)</label>
+                                <input type="number" id="consumo-gasolina" placeholder="10" step="0.1" min="0">
+                            </div>
+                        </div>
+                        <div class="fuel-result">
+                            <span class="result-label">Custo/km</span>
+                            <span class="result-value" id="custo-gasolina">R$ --</span>
+                        </div>
                     </div>
-                    <div class="day-card">
-                        <div class="day-name">Ter</div>
-                        <div class="day-meal">Carne moída + legumes + batata-doce</div>
-                        <button class="swap-btn" title="Trocar este almoço">🔄</button>
+
+                    <!-- ETANOL -->
+                    <div class="fuel-card">
+                        <div class="fuel-card-header">
+                            <span class="fuel-icon">🟢</span>
+                            <h3>Etanol</h3>
+                        </div>
+                        <div class="fuel-card-inputs">
+                            <div class="input-group">
+                                <label>Preço (R$/L)</label>
+                                <input type="number" id="preco-etanol" placeholder="4.00" step="0.01" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label>Consumo (km/L)</label>
+                                <input type="number" id="consumo-etanol" placeholder="8" step="0.1" min="0">
+                            </div>
+                        </div>
+                        <div class="fuel-result">
+                            <span class="result-label">Custo/km</span>
+                            <span class="result-value" id="custo-etanol">R$ --</span>
+                        </div>
                     </div>
-                    <div class="day-card">
-                        <div class="day-name">Qua</div>
-                        <div class="day-meal">Frango desfiado + milho + arroz + salada</div>
-                        <button class="swap-btn" title="Trocar este almoço">🔄</button>
+
+                    <!-- DIESEL -->
+                    <div class="fuel-card">
+                        <div class="fuel-card-header">
+                            <span class="fuel-icon">🔵</span>
+                            <h3>Diesel</h3>
+                        </div>
+                        <div class="fuel-card-inputs">
+                            <div class="input-group">
+                                <label>Preço (R$/L)</label>
+                                <input type="number" id="preco-diesel" placeholder="5.20" step="0.01" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label>Consumo (km/L)</label>
+                                <input type="number" id="consumo-diesel" placeholder="12" step="0.1" min="0">
+                            </div>
+                        </div>
+                        <div class="fuel-result">
+                            <span class="result-label">Custo/km</span>
+                            <span class="result-value" id="custo-diesel">R$ --</span>
+                        </div>
                     </div>
-                    <div class="day-card">
-                        <div class="day-name">Qui</div>
-                        <div class="day-meal">Carne acebolada + arroz + couve</div>
-                        <button class="swap-btn" title="Trocar este almoço">🔄</button>
-                    </div>
-                    <div class="day-card">
-                        <div class="day-name">Sex</div>
-                        <div class="day-meal">Frango com molho de iogurte + legumes</div>
-                        <button class="swap-btn" title="Trocar este almoço">🔄</button>
+
+                    <!-- GNV -->
+                    <div class="fuel-card">
+                        <div class="fuel-card-header">
+                            <span class="fuel-icon">⚪</span>
+                            <h3>GNV</h3>
+                        </div>
+                        <div class="fuel-card-inputs">
+                            <div class="input-group">
+                                <label>Preço (R$/m³)</label>
+                                <input type="number" id="preco-gnv" placeholder="3.50" step="0.01" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label>Consumo (km/m³)</label>
+                                <input type="number" id="consumo-gnv" placeholder="15" step="0.1" min="0">
+                            </div>
+                        </div>
+                        <div class="fuel-result">
+                            <span class="result-label">Custo/km</span>
+                            <span class="result-value" id="custo-gnv">R$ --</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- LANCHE DA TARDE -->
-                <div class="meal-section" data-meal-type="snack">
-                    <div class="meal-title snack-title">🥤 Lanche</div>
-                    <div class="day-card">
-                        <div class="day-name">Seg</div>
-                        <div class="day-meal">Iogurte com frutas</div>
-                        <button class="swap-btn" title="Trocar este lanche">🔄</button>
-                    </div>
-                    <div class="day-card">
-                        <div class="day-name">Ter</div>
-                        <div class="day-meal">Mix de castanhas + maçã</div>
-                        <button class="swap-btn" title="Trocar este lanche">🔄</button>
-                    </div>
-                    <div class="day-card">
-                        <div class="day-name">Qua</div>
-                        <div class="day-meal">Pão integral + queijo + café</div>
-                        <button class="swap-btn" title="Trocar este lanche">🔄</button>
-                    </div>
-                    <div class="day-card">
-                        <div class="day-name">Qui</div>
-                        <div class="day-meal">Tapioca com pasta de frango</div>
-                        <button class="swap-btn" title="Trocar este lanche">🔄</button>
-                    </div>
-                    <div class="day-card">
-                        <div class="day-name">Sex</div>
-                        <div class="day-meal">Bolo integral de banana + chá</div>
-                        <button class="swap-btn" title="Trocar este lanche">🔄</button>
+                <button class="btn btn-primary btn-block" onclick="compararCombustiveis()">🔍 Comparar</button>
+
+                <div class="result-box">
+                    <div id="resultado-comparacao" class="resultado-vazio">
+                        <p>Preencha os campos e clique em comparar</p>
                     </div>
                 </div>
-            </div>
+            </section>
+
+            <!-- ABA 2: TRAJETO -->
+            <section class="tab-pane" id="trajeto">
+                <div class="section-header">
+                    <h2>Calcular trajeto</h2>
+                    <p>Quantos litros você vai gastar?</p>
+                </div>
+
+                <div class="distance-section">
+                    <div class="distance-input-group">
+                        <label>Distância (km)</label>
+                        <input type="number" id="distancia" placeholder="100" step="0.1" min="0">
+                    </div>
+                    <label class="checkbox-group">
+                        <input type="checkbox" id="ida-volta">
+                        <span>Calcular ida e volta (×2)</span>
+                    </label>
+                    <div class="distance-display">
+                        <span>Total:</span>
+                        <span id="distancia-display" class="distance-value">0 km</span>
+                    </div>
+                </div>
+
+                <div class="fuel-grid">
+                    <!-- GASOLINA TRAJETO -->
+                    <div class="fuel-card">
+                        <div class="fuel-card-header">
+                            <span class="fuel-icon">⚫</span>
+                            <h3>Gasolina</h3>
+                        </div>
+                        <div class="fuel-card-inputs">
+                            <div class="input-group">
+                                <label>Consumo (km/L)</label>
+                                <input type="number" id="consumo-trajeto-gasolina" placeholder="10" step="0.1" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label>Preço (R$/L)</label>
+                                <input type="number" id="preco-trajeto-gasolina" placeholder="5.50" step="0.01" min="0">
+                            </div>
+                        </div>
+                        <div class="fuel-result">
+                            <span class="result-label">Litros</span>
+                            <span class="result-value" id="litros-gasolina">-- L</span>
+                            <span class="result-label" style="margin-top: 8px;">Custo Total</span>
+                            <span class="result-value" id="custo-trajeto-gasolina">R$ --</span>
+                        </div>
+                    </div>
+
+                    <!-- ETANOL TRAJETO -->
+                    <div class="fuel-card">
+                        <div class="fuel-card-header">
+                            <span class="fuel-icon">🟢</span>
+                            <h3>Etanol</h3>
+                        </div>
+                        <div class="fuel-card-inputs">
+                            <div class="input-group">
+                                <label>Consumo (km/L)</label>
+                                <input type="number" id="consumo-trajeto-etanol" placeholder="8" step="0.1" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label>Preço (R$/L)</label>
+                                <input type="number" id="preco-trajeto-etanol" placeholder="4.00" step="0.01" min="0">
+                            </div>
+                        </div>
+                        <div class="fuel-result">
+                            <span class="result-label">Litros</span>
+                            <span class="result-value" id="litros-etanol">-- L</span>
+                            <span class="result-label" style="margin-top: 8px;">Custo Total</span>
+                            <span class="result-value" id="custo-trajeto-etanol">R$ --</span>
+                        </div>
+                    </div>
+
+                    <!-- DIESEL TRAJETO -->
+                    <div class="fuel-card">
+                        <div class="fuel-card-header">
+                            <span class="fuel-icon">🔵</span>
+                            <h3>Diesel</h3>
+                        </div>
+                        <div class="fuel-card-inputs">
+                            <div class="input-group">
+                                <label>Consumo (km/L)</label>
+                                <input type="number" id="consumo-trajeto-diesel" placeholder="12" step="0.1" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label>Preço (R$/L)</label>
+                                <input type="number" id="preco-trajeto-diesel" placeholder="5.20" step="0.01" min="0">
+                            </div>
+                        </div>
+                        <div class="fuel-result">
+                            <span class="result-label">Litros</span>
+                            <span class="result-value" id="litros-diesel">-- L</span>
+                            <span class="result-label" style="margin-top: 8px;">Custo Total</span>
+                            <span class="result-value" id="custo-trajeto-diesel">R$ --</span>
+                        </div>
+                    </div>
+
+                    <!-- GNV TRAJETO -->
+                    <div class="fuel-card">
+                        <div class="fuel-card-header">
+                            <span class="fuel-icon">⚪</span>
+                            <h3>GNV</h3>
+                        </div>
+                        <div class="fuel-card-inputs">
+                            <div class="input-group">
+                                <label>Consumo (km/m³)</label>
+                                <input type="number" id="consumo-trajeto-gnv" placeholder="15" step="0.1" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label>Preço (R$/m³)</label>
+                                <input type="number" id="preco-trajeto-gnv" placeholder="3.50" step="0.01" min="0">
+                            </div>
+                        </div>
+                        <div class="fuel-result">
+                            <span class="result-label">m³</span>
+                            <span class="result-value" id="litros-gnv">-- m³</span>
+                            <span class="result-label" style="margin-top: 8px;">Custo Total</span>
+                            <span class="result-value" id="custo-trajeto-gnv">R$ --</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-primary btn-block" onclick="calcularTrajeto()">📊 Calcular</button>
+                    <button class="btn btn-secondary btn-block" onclick="salvarCalculoTrajeto()">💾 Salvar</button>
+                </div>
+            </section>
+
+            <!-- ABA 3: ECONOMIA -->
+            <section class="tab-pane" id="economia">
+                <div class="section-header">
+                    <h2>Calcular economia</h2>
+                    <p>Quanto você economiza trocando de combustível?</p>
+                </div>
+
+                <div class="economy-section">
+                    <div class="economy-inputs">
+                        <div class="input-group">
+                            <label>Distância percorrida/mês (km)</label>
+                            <input type="number" id="economia-distancia" placeholder="1000" step="10" min="0">
+                        </div>
+                    </div>
+
+                    <div class="fuel-grid">
+                        <div class="fuel-card compact">
+                            <div class="fuel-card-header">
+                                <span class="fuel-icon">⚫</span>
+                                <h3>Gasolina</h3>
+                            </div>
+                            <div class="fuel-card-inputs">
+                                <div class="input-group">
+                                    <label>Preço (R$/L)</label>
+                                    <input type="number" id="economia-preco-gasolina" placeholder="5.50" step="0.01" min="0">
+                                </div>
+                                <div class="input-group">
+                                    <label>Consumo (km/L)</label>
+                                    <input type="number" id="economia-consumo-gasolina" placeholder="10" step="0.1" min="0">
+                                </div>
+                            </div>
+                            <div class="fuel-result">
+                                <span class="result-label">Gasto/mês</span>
+                                <span class="result-value" id="economia-custo-gasolina">R$ --</span>
+                            </div>
+                        </div>
+
+                        <div class="fuel-card compact">
+                            <div class="fuel-card-header">
+                                <span class="fuel-icon">🟢</span>
+                                <h3>Etanol</h3>
+                            </div>
+                            <div class="fuel-card-inputs">
+                                <div class="input-group">
+                                    <label>Preço (R$/L)</label>
+                                    <input type="number" id="economia-preco-etanol" placeholder="4.00" step="0.01" min="0">
+                                </div>
+                                <div class="input-group">
+                                    <label>Consumo (km/L)</label>
+                                    <input type="number" id="economia-consumo-etanol" placeholder="8" step="0.1" min="0">
+                                </div>
+                            </div>
+                            <div class="fuel-result">
+                                <span class="result-label">Gasto/mês</span>
+                                <span class="result-value" id="economia-custo-etanol">R$ --</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary btn-block" onclick="calcularEconomia()">🎯 Calcular Economia</button>
+
+                    <div class="result-box">
+                        <div id="resultado-economia" class="resultado-vazio">
+                            <p>Preencha os dados para ver a economia</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ABA 4: HISTÓRICO -->
+            <section class="tab-pane" id="historico">
+                <div class="section-header">
+                    <h2>Histórico</h2>
+                    <p>Seus últimos cálculos</p>
+                </div>
+
+                <div class="history-controls">
+                    <button class="btn btn-small" onclick="exportarHistorico()">📥 Exportar</button>
+                    <button class="btn btn-small btn-danger" onclick="limparHistorico()">🗑️ Limpar</button>
+                </div>
+
+                <div id="lista-historico" class="history-list">
+                    <p class="empty-state">Nenhum cálculo salvo ainda</p>
+                </div>
+            </section>
         </div>
+    </main>
 
-        <!-- PÁGINA 2: LISTA DE COMPRAS -->
-        <div class="page">
-            <div class="shopping-section">
-                <h2>🛒 Lista de Compras</h2>
-
-                <div class="shopping-grid">
-                    <div class="category-card">
-                        <div class="category-header">🥩 Proteínas</div>
-                        <ul class="item-list" id="cat-proteinas">
-                            <li><span class="item-name">—</span><span class="item-qty"></span></li>
-                        </ul>
-                    </div>
-
-                    <div class="category-card">
-                        <div class="category-header">🌾 Grãos</div>
-                        <ul class="item-list" id="cat-graos">
-                            <li><span class="item-name">—</span><span class="item-qty"></span></li>
-                        </ul>
-                    </div>
-
-                    <div class="category-card">
-                        <div class="category-header">🥦 Legumes</div>
-                        <ul class="item-list" id="cat-legumes">
-                            <li><span class="item-name">—</span><span class="item-qty"></span></li>
-                        </ul>
-                    </div>
-
-                    <div class="category-card">
-                        <div class="category-header">🍌 Frutas</div>
-                        <ul class="item-list" id="cat-frutas">
-                            <li><span class="item-name">—</span><span class="item-qty"></span></li>
-                        </ul>
-                    </div>
-
-                    <div class="category-card">
-                        <div class="category-header">🧂 Temperos</div>
-                        <ul class="item-list" id="cat-temperos">
-                            <li><span class="item-name">—</span><span class="item-qty"></span></li>
-                        </ul>
-                    </div>
-
-                    <div class="category-card">
-                        <div class="category-header">🥫 Outros</div>
-                        <ul class="item-list" id="cat-outros">
-                            <li><span class="item-name">—</span><span class="item-qty"></span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- MODAL DE NOTIFICAÇÃO -->
-    <div id="notification-modal" class="modal hidden">
-        <div class="modal-content">
-            <button class="modal-close" onclick="document.getElementById('notification-modal').classList.add('hidden')">&times;</button>
-            <div class="modal-icon">⚠️</div>
-            <h2 id="modal-title">Aviso</h2>
-            <p id="modal-message"></p>
-            <button class="modal-btn" onclick="document.getElementById('notification-modal').classList.add('hidden')">OK</button>
-        </div>
-    </div>
-
-    <!-- MODAL DE COMPARTILHAMENTO -->
-    <div id="share-modal" class="modal hidden">
-        <div class="modal-content">
-            <button class="modal-close" onclick="document.getElementById('share-modal').classList.add('hidden')">&times;</button>
-            <div class="modal-icon">�</div>
-            <h2 id="share-title">Compartilhar Cardápio</h2>
-            <p id="share-message">Envie seu cardápio semanal para outra pessoa</p>
-            
-            <div class="share-url-container">
-                <label>📎 Link do cardápio:</label>
-                <div class="url-input-wrapper">
-                    <input type="text" id="share-url" readonly class="share-url" placeholder="Gerando link...">
-                    <button class="copy-btn" onclick="SHARE.copyToClipboard()" title="Copiar link para área de transferência">
-                        <span>📋</span>
-                        <span>Copiar</span>
-                    </button>
-                </div>
-            </div>
-
-            <div class="share-buttons-container">
-                <button class="share-option-btn whatsapp" onclick="SHARE.shareVia('whatsapp')" title="Compartilhar via WhatsApp">
-                    <span style="font-size: 1.5rem;">📲</span>
-                    <span>WhatsApp</span>
-                </button>
-                <button class="share-option-btn telegram" onclick="SHARE.shareVia('telegram')" title="Compartilhar via Telegram">
-                    <span style="font-size: 1.5rem;">✈️</span>
-                    <span>Telegram</span>
-                </button>
-                <button class="share-option-btn email" onclick="SHARE.shareVia('email')" title="Compartilhar via Email">
-                    <span style="font-size: 1.5rem;">📧</span>
-                    <span>Email</span>
-                </button>
-                <button class="share-option-btn copy" onclick="SHARE.copyToClipboard()" title="Copiar link">
-                    <span style="font-size: 1.5rem;">📋</span>
-                    <span>Copiar Link</span>
-                </button>
-            </div>
-        </div>
-    </div>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>⛽ Fuel Calc © 2026 | Calcule e economize</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
-
 </html>
