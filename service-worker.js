@@ -1,12 +1,12 @@
-const CACHE_NAME = 'fuel-calc-v1';
+const CACHE_NAME = 'fuel-calc-v2';
 const STATIC_ASSETS = [
     '/',
     '/index.html',
     '/style.css',
     '/script.js',
     '/manifest.json',
-    '/icon-192.png',
-    '/icon-512.png'
+    '/icon-192.svg',
+    '/icon-512.svg'
 ];
 
 // Instalação do Service Worker

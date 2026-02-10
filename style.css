@@ -36,23 +36,11 @@ html {
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', 'Lucida Grande', sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: radial-gradient(circle at 100% 100%, rgba(255, 255, 255, 0.03), transparent), linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
     min-height: 100vh;
     color: var(--dark);
     overflow-x: hidden;
     position: relative;
-}
-
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at 100% 100%, rgba(255, 255, 255, 0.05), transparent);
-    pointer-events: none;
-    z-index: 0;
 }
 
 
@@ -138,6 +126,8 @@ body::before {
 
 .tabs-container {
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 4px;
     padding: 12px 8px;
     background: var(--white);
@@ -160,8 +150,9 @@ body::before {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 4px;
-    padding: 8px 12px;
+    padding: 10px 16px;
     background: transparent;
     border: none;
     cursor: pointer;
@@ -173,6 +164,7 @@ body::before {
     font-weight: 500;
     color: var(--gray);
     flex-shrink: 0;
+    min-width: 80px;
 }
 
 .tab-btn:hover {
@@ -187,12 +179,16 @@ body::before {
 }
 
 .tab-icon {
-    font-size: 20px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .tab-label {
     font-size: 11px;
     font-weight: 600;
+    text-align: center;
 }
 
 
@@ -565,14 +561,103 @@ body::before {
 }
 
 .melhor-opcao {
-    background: linear-gradient(135deg, var(--success) 0%, #33a853 100%);
+    background: linear-gradient(135deg, #51cf66 0%, #33a853 100%);
     color: var(--white);
-    padding: 16px;
+    padding: 20px;
+    border-radius: var(--radius);
+    margin-bottom: 16px;
+    box-shadow: 0 8px 24px rgba(81, 207, 102, 0.35);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    animation: pulse 0.6s ease;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.02);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.melhor-opcao-icon {
+    font-size: 48px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.melhor-opcao-text {
+    flex: 1;
+    text-align: left;
+}
+
+.melhor-opcao-titulo {
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.95;
+    margin-bottom: 4px;
+}
+
+.melhor-opcao-nome {
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.resultado-detalhes {
+    background: var(--gray-light);
     border-radius: var(--radius-sm);
+    padding: 16px;
     margin-bottom: 12px;
-    box-shadow: 0 4px 12px rgba(81, 207, 102, 0.3);
+}
+
+.resultado-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.resultado-item:last-child {
+    border-bottom: none;
+}
+
+.resultado-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gray);
+}
+
+.resultado-valor {
+    font-size: 16px;
     font-weight: 700;
+    color: var(--primary);
+    font-variant-numeric: tabular-nums;
+}
+
+.economia-badge {
+    background: linear-gradient(135deg, #ffd93d 0%, #ffc107 100%);
+    color: var(--dark);
+    padding: 14px;
+    border-radius: var(--radius-sm);
     text-align: center;
+    font-weight: 700;
+    font-size: 14px;
+    box-shadow: 0 4px 12px rgba(255, 217, 61, 0.3);
+}
+
+.economia-badge small {
+    font-size: 12px;
+    opacity: 0.8;
 }
 
 
@@ -821,6 +906,10 @@ body::before {
     line-height: 1.5;
 }
 
+.settings-save-btn {
+    margin-top: 16px;
+}
+
 
 /* ==================== THEME TOGGLE ==================== */
 
@@ -977,23 +1066,66 @@ body::before {
     margin-bottom: 4px;
 }
 
+.about-info-text {
+    margin-top: 12px;
+    font-size: 12px;
+    color: var(--gray);
+}
+
+body.dark-theme .about-info-text {
+    color: #8b92a6;
+}
+
 
 /* ==================== DARK THEME ==================== */
 
 body.dark-theme {
-    background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
+    background: radial-gradient(circle at 100% 100%, rgba(255, 255, 255, 0.02), transparent), linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%) !important;
+    min-height: 100vh !important;
+    color: var(--white) !important;
+}
+
+body.dark-theme * {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+body.dark-theme p,
+body.dark-theme span,
+body.dark-theme li,
+body.dark-theme div,
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme h4,
+body.dark-theme h5,
+body.dark-theme h6 {
+    color: inherit;
+}
+
+body.dark-theme .main-container {
+    background: transparent !important;
+}
+
+body.dark-theme .content-area {
+    background: transparent !important;
 }
 
 body.dark-theme .header {
     background: linear-gradient(135deg, #2d2d44 0%, #1a1a2e 100%);
 }
 
+body.dark-theme .header-title,
+body.dark-theme .header-subtitle {
+    color: var(--white);
+}
+
 body.dark-theme .tabs-container {
-    background: #2d2d44;
+    background: rgba(45, 45, 68, 0.9) !important;
+    color: var(--white) !important;
 }
 
 body.dark-theme .tab-btn {
-    color: #8b92a6;
+    color: #b0b7c7;
 }
 
 body.dark-theme .tab-btn:hover {
@@ -1006,74 +1138,308 @@ body.dark-theme .tab-btn.active {
     color: var(--white);
 }
 
+body.dark-theme .section-header h2,
+body.dark-theme .section-header p {
+    color: var(--white);
+}
+
 body.dark-theme .fuel-card,
 body.dark-theme .settings-card,
 body.dark-theme .distance-section,
-body.dark-theme .result-box {
+body.dark-theme .result-box,
+body.dark-theme .economy-section,
+body.dark-theme .tank-capacity-section {
     background: #2d2d44;
     color: var(--white);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
 body.dark-theme .fuel-card-header h3,
-body.dark-theme .settings-header h3,
-body.dark-theme .section-header h2 {
+body.dark-theme .settings-header h3 {
     color: var(--white);
-}
-
-body.dark-theme .input-group input,
-body.dark-theme .distance-input-group input {
-    background: #3d3d54;
-    color: var(--white);
-    border-color: #4d4d64;
-}
-
-body.dark-theme .input-group input::placeholder {
-    color: #6b6b8a;
 }
 
 body.dark-theme .input-group label,
 body.dark-theme .distance-input-group label,
-body.dark-theme .settings-description,
-body.dark-theme .fuel-check-label,
-body.dark-theme .theme-label,
+body.dark-theme .result-label,
+body.dark-theme .settings-description {
+    color: #b0b7c7;
+}
+
+body.dark-theme .input-group input,
+body.dark-theme .distance-input-group input {
+    background: #1a1a2e;
+    border-color: #3d3d54;
+    color: var(--white);
+}
+
+body.dark-theme .input-group input:focus,
+body.dark-theme .distance-input-group input:focus {
+    background: #1a1a2e;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+body.dark-theme .input-group input::placeholder,
+body.dark-theme .distance-input-group input::placeholder {
+    color: #6b7280;
+}
+
+body.dark-theme .fuel-result {
+    background: linear-gradient(135deg, #1a1a2e 0%, #252538 100%);
+    border: none !important;
+}
+
+body.dark-theme .result-value {
+    color: var(--primary-light);
+}
+
+body.dark-theme .distance-display {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: var(--white);
+}
+
+body.dark-theme .distance-value {
+    color: var(--white);
+}
+
+body.dark-theme .checkbox-group {
+    background: #1a1a2e;
+    color: var(--white);
+    border: none !important;
+}
+
+body.dark-theme .checkbox-group:hover {
+    background: #252538;
+}
+
 body.dark-theme .checkbox-group span {
-    color: #b0b8c8;
-}
-
-body.dark-theme .fuel-result,
-body.dark-theme .checkbox-group,
-body.dark-theme .theme-toggle-container,
-body.dark-theme .about-info {
-    background: #3d3d54;
-}
-
-body.dark-theme .result-label {
-    color: #8b92a6;
+    color: var(--white) !important;
 }
 
 body.dark-theme .fuel-checkbox {
-    background: #3d3d54;
+    background: #1a1a2e;
+    border-color: #3d3d54 !important;
 }
 
 body.dark-theme .fuel-checkbox:hover {
-    background: #4d4d64;
+    background: #252538;
+    border-color: #4d4d64;
+}
+
+body.dark-theme .fuel-check-label {
+    color: var(--white);
+}
+
+body.dark-theme .fuel-checkbox:has(input:checked) {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+    border-color: var(--primary-light) !important;
+}
+
+body.dark-theme .about-info {
+    background: #1a1a2e;
+}
+
+body.dark-theme .about-info p,
+body.dark-theme .about-info strong {
+    color: var(--white) !important;
+}
+
+body.dark-theme .about-info-text {
+    color: #8b92a6;
+}
+
+body.dark-theme .resultado-vazio p {
+    color: #8b92a6;
+}
+
+body.dark-theme .resultado-detalhes {
+    background: #1a1a2e;
+}
+
+body.dark-theme .resultado-item {
+    border-bottom: 1px solid #3d3d54 !important;
+}
+
+body.dark-theme .resultado-item:last-child {
+    border-bottom: none !important;
+}
+
+body.dark-theme .resultado-label {
+    color: #b0b7c7;
+}
+
+body.dark-theme .resultado-valor {
+    color: var(--primary-light);
+}
+
+body.dark-theme .economy-inputs {
+    background: #2d2d44 !important;
+    color: var(--white) !important;
+}
+
+body.dark-theme .economy-inputs label {
+    color: #b0b7c7 !important;
+}
+
+body.dark-theme .theme-label {
+    color: #b0b7c7 !important;
+}
+
+body.dark-theme .theme-toggle-container {
+    background: #1a1a2e !important;
+    border: 1px solid #3d3d54;
+}
+
+body.dark-theme .distance-section {
+    background: #2d2d44 !important;
+    color: var(--white);
+}
+
+body.dark-theme .distance-section label,
+body.dark-theme .distance-section span {
+    color: var(--white) !important;
+}
+
+body.dark-theme .distance-input-group label {
+    color: #b0b7c7 !important;
+}
+
+body.dark-theme .theme-label {
+    color: #b0b7c7 !important;
+}
+
+body.dark-theme .btn-primary {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: var(--white);
+}
+
+body.dark-theme .btn-secondary {
+    background: var(--success);
+    color: var(--white);
+}
+
+body.dark-theme .footer {
+    background: rgba(26, 26, 46, 0.6) !important;
+    color: #b0b7c7 !important;
+    border-top-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.dark-theme .toast {
+    background: linear-gradient(135deg, var(--success) 0%, #33a853 100%);
+    color: var(--white);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
 body.dark-theme .history-item {
     background: #2d2d44;
+    border-left-color: var(--primary-light);
+    border-right: none;
+    border-top: none;
+    border-bottom: none;
 }
 
 body.dark-theme .history-item-title {
-    color: var(--white);
+    color: var(--white) !important;
+}
+
+body.dark-theme .history-item-date {
+    color: #8b92a6;
+}
+
+body.dark-theme .history-item-value {
+    color: var(--primary-light);
 }
 
 body.dark-theme .empty-state {
     color: #8b92a6;
 }
 
-body.dark-theme .footer {
-    color: rgba(255, 255, 255, 0.6);
-    background: rgba(0, 0, 0, 0.2);
+body.dark-theme .economy-section {
+    background: transparent;
+}
+
+body.dark-theme .settings-header {
+    border-bottom-color: #3d3d54 !important;
+}
+
+body.dark-theme .settings-icon {
+    filter: none;
+}
+
+body.dark-theme .melhor-opcao {
+    background: linear-gradient(135deg, #51cf66 0%, #33a853 100%);
+    color: var(--white) !important;
+    border: none !important;
+}
+
+body.dark-theme .melhor-opcao * {
+    color: var(--white) !important;
+}
+
+body.dark-theme .economia-badge {
+    background: linear-gradient(135deg, #ffd93d 0%, #ffc107 100%);
+    color: #1a1a2e;
+    font-weight: 800;
+}
+
+body.dark-theme .about-info strong {
+    color: var(--white) !important;
+}
+
+/* Forçar todas as labels, spans e textos dentro de cards a ficarem claros */
+body.dark-theme .fuel-card *,
+body.dark-theme .settings-card *,
+body.dark-theme .distance-section *,
+body.dark-theme .result-box *,
+body.dark-theme .economy-inputs * {
+    border-color: #3d3d54 !important;
+}
+
+body.dark-theme .fuel-card h3,
+body.dark-theme .fuel-card label,
+body.dark-theme .fuel-card span,
+body.dark-theme .fuel-card p,
+body.dark-theme .settings-card h3,
+body.dark-theme .settings-card label,
+body.dark-theme .settings-card span,
+body.dark-theme .settings-card p,
+body.dark-theme .distance-section label,
+body.dark-theme .distance-section span,
+body.dark-theme .economy-inputs label,
+body.dark-theme .economy-inputs span {
+    color: var(--white);
+}
+
+/* Exceções para labels que devem ser cinza claro */
+body.dark-theme .input-group label,
+body.dark-theme .distance-input-group label,
+body.dark-theme .result-label,
+body.dark-theme .settings-description {
+    color: #b0b7c7 !important;
+}
+
+/* Resultado valores devem ser roxo claro */
+body.dark-theme .result-value {
+    color: var(--primary-light) !important;
+}
+
+/* Distance value deve ser branco */
+body.dark-theme .distance-value {
+    color: var(--white) !important;
+}
+
+/* Botões mantém suas cores */
+body.dark-theme .btn {
+    color: var(--white) !important;
+}
+
+/* Fuel icons mantém suas cores originais */
+body.dark-theme .fuel-icon,
+body.dark-theme .fuel-check-icon,
+body.dark-theme .settings-icon,
+body.dark-theme .tab-icon {
+    filter: brightness(1.1);
 }
 
 
@@ -1098,7 +1464,7 @@ body.dark-theme .footer {
     }
     body:not(.light-theme) .fuel-card-header h3,
     body:not(.light-theme) .settings-header h3 {
-        color: var(--white);
+        color: var (--white);
     }
     body:not(.light-theme) .input-group input {
         background: #3d3d54;
@@ -1109,3 +1475,84 @@ body.dark-theme .footer {
         background: #3d3d54;
     }
 }
+
+
+/* ==================== TANK CAPACITY SECTION ==================== */
+
+.tank-capacity-section {
+    background: var(--white);
+    border-radius: var (--radius);
+    padding: 18px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-md);
+}
+
+.tank-capacity-section .input-group {
+    margin-bottom: 0;
+}
+
+.tank-capacity-section label {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 8px;
+}
+
+.result-label.tank-cost {
+    margin-top: 12px;
+    padding-top: 8px;
+    border-top: 1px solid #e8e8f0;
+}
+
+.result-label.trajeto-cost {
+    margin-top: 8px;
+}
+
+
+/* ==================== ECONOMY SECTION ==================== */
+
+.economy-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.economy-inputs {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 18px;
+    box-shadow: var(--shadow-md);
+}
+
+.economy-inputs .input-group {
+    margin-bottom: 0;
+}
+
+body.dark-theme .economy-inputs {
+    background: #2d2d44 !important;
+    color: var(--white) !important;
+}
+
+/* Light theme explicit reset to ensure full app switch */
+body.light-theme {
+    color: var(--dark) !important;
+    background: radial-gradient(circle at 100% 100%, rgba(255, 255, 255, 0.03), transparent), linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%) !important;
+}
+
+body.light-theme .tabs-container { background: var(--white) !important; color: var(--gray) !important; }
+body.light-theme .fuel-card,
+body.light-theme .settings-card,
+body.light-theme .distance-section,
+body.light-theme .result-box,
+body.light-theme .economy-section,
+body.light-theme .tank-capacity-section { background: var(--white) !important; color: var(--dark) !important; }
+body.light-theme .input-group label,
+body.light-theme .distance-input-group label,
+body.light-theme .result-label,
+body.light-theme .settings-description { color: var(--gray) !important; }
+body.light-theme .input-group input,
+body.light-theme .distance-input-group input { background: var(--gray-light) !important; border-color: #e8e8f0 !important; color: var(--dark) !important; }
+body.light-theme .fuel-result { background: linear-gradient(135deg, var(--gray-light) 0%, #e8eaf6 100%) !important; }
+body.light-theme .footer { background: rgba(0, 0, 0, 0.1) !important; color: rgba(255,255,255,0.8) !important; border-top-color: rgba(255,255,255,0.1) !important; }
+
+/* Vers�o: 20260210125731 */

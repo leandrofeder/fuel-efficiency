@@ -42,14 +42,9 @@
             <button class="tab-btn" data-tab="trajeto">
                 <span class="tab-icon">🛣️</span>
                 <span class="tab-label">Trajeto</span>
-            </button>
-            <button class="tab-btn" data-tab="economia">
+            </button>            <button class="tab-btn" data-tab="economia">
                 <span class="tab-icon">💰</span>
                 <span class="tab-label">Economia</span>
-            </button>
-            <button class="tab-btn" data-tab="historico">
-                <span class="tab-icon">📋</span>
-                <span class="tab-label">Histórico</span>
             </button>
             <button class="tab-btn" data-tab="configuracoes">
                 <span class="tab-icon">⚙️</span>
@@ -59,8 +54,7 @@
 
 
         <!-- CONTEÚDO DAS ABAS -->
-        <div class="content-area">
-            <!-- ABA 1: COMPARADOR -->
+        <div class="content-area">            <!-- ABA 1: COMPARADOR -->
             <section class="tab-pane active" id="comparador">
                 <div class="section-header">
                     <h2>Qual combustível compensa?</h2>
@@ -73,20 +67,21 @@
                         <div class="fuel-card-header">
                             <span class="fuel-icon">⚫</span>
                             <h3>Gasolina</h3>
-                        </div>
-                        <div class="fuel-card-inputs">
+                        </div>                        <div class="fuel-card-inputs">
                             <div class="input-group">
                                 <label>Preço (R$/L)</label>
-                                <input type="number" id="preco-gasolina" placeholder="5.50" step="0.01" min="0">
+                                <input type="number" id="preco-gasolina" placeholder="5.50" step="0.01" min="0" oninput="sincronizarDados()">
                             </div>
                             <div class="input-group">
                                 <label>Consumo (km/L)</label>
-                                <input type="number" id="consumo-gasolina" placeholder="10" step="0.1" min="0">
+                                <input type="number" id="consumo-gasolina" placeholder="10" step="0.1" min="0" oninput="sincronizarDados()">
                             </div>
                         </div>
                         <div class="fuel-result">
                             <span class="result-label">Custo/km</span>
                             <span class="result-value" id="custo-gasolina">R$ --</span>
+                            <span class="result-label tank-cost">Encher tanque</span>
+                            <span class="result-value" id="tanque-gasolina">R$ --</span>
                         </div>
                     </div>
 
@@ -95,20 +90,21 @@
                         <div class="fuel-card-header">
                             <span class="fuel-icon">🟢</span>
                             <h3>Etanol</h3>
-                        </div>
-                        <div class="fuel-card-inputs">
+                        </div>                        <div class="fuel-card-inputs">
                             <div class="input-group">
                                 <label>Preço (R$/L)</label>
-                                <input type="number" id="preco-etanol" placeholder="4.00" step="0.01" min="0">
+                                <input type="number" id="preco-etanol" placeholder="4.00" step="0.01" min="0" oninput="sincronizarDados()">
                             </div>
                             <div class="input-group">
                                 <label>Consumo (km/L)</label>
-                                <input type="number" id="consumo-etanol" placeholder="8" step="0.1" min="0">
+                                <input type="number" id="consumo-etanol" placeholder="8" step="0.1" min="0" oninput="sincronizarDados()">
                             </div>
                         </div>
                         <div class="fuel-result">
                             <span class="result-label">Custo/km</span>
                             <span class="result-value" id="custo-etanol">R$ --</span>
+                            <span class="result-label tank-cost">Encher tanque</span>
+                            <span class="result-value" id="tanque-etanol">R$ --</span>
                         </div>
                     </div>
 
@@ -117,20 +113,21 @@
                         <div class="fuel-card-header">
                             <span class="fuel-icon">🔵</span>
                             <h3>Diesel</h3>
-                        </div>
-                        <div class="fuel-card-inputs">
+                        </div>                        <div class="fuel-card-inputs">
                             <div class="input-group">
                                 <label>Preço (R$/L)</label>
-                                <input type="number" id="preco-diesel" placeholder="5.20" step="0.01" min="0">
+                                <input type="number" id="preco-diesel" placeholder="5.20" step="0.01" min="0" oninput="sincronizarDados()">
                             </div>
                             <div class="input-group">
                                 <label>Consumo (km/L)</label>
-                                <input type="number" id="consumo-diesel" placeholder="12" step="0.1" min="0">
+                                <input type="number" id="consumo-diesel" placeholder="12" step="0.1" min="0" oninput="sincronizarDados()">
                             </div>
                         </div>
                         <div class="fuel-result">
                             <span class="result-label">Custo/km</span>
                             <span class="result-value" id="custo-diesel">R$ --</span>
+                            <span class="result-label tank-cost">Encher tanque</span>
+                            <span class="result-value" id="tanque-diesel">R$ --</span>
                         </div>
                     </div>
 
@@ -139,20 +136,21 @@
                         <div class="fuel-card-header">
                             <span class="fuel-icon">⚪</span>
                             <h3>GNV</h3>
-                        </div>
-                        <div class="fuel-card-inputs">
+                        </div>                        <div class="fuel-card-inputs">
                             <div class="input-group">
                                 <label>Preço (R$/m³)</label>
-                                <input type="number" id="preco-gnv" placeholder="3.50" step="0.01" min="0">
+                                <input type="number" id="preco-gnv" placeholder="3.50" step="0.01" min="0" oninput="sincronizarDados()">
                             </div>
                             <div class="input-group">
                                 <label>Consumo (km/m³)</label>
-                                <input type="number" id="consumo-gnv" placeholder="15" step="0.1" min="0">
+                                <input type="number" id="consumo-gnv" placeholder="15" step="0.1" min="0" oninput="sincronizarDados()">
                             </div>
                         </div>
                         <div class="fuel-result">
                             <span class="result-label">Custo/km</span>
                             <span class="result-value" id="custo-gnv">R$ --</span>
+                            <span class="result-label tank-cost">Encher tanque</span>
+                            <span class="result-value" id="tanque-gnv">R$ --</span>
                         </div>
                     </div>
                 </div>
@@ -204,11 +202,10 @@
                                 <label>Preço (R$/L)</label>
                                 <input type="number" id="preco-trajeto-gasolina" placeholder="5.50" step="0.01" min="0">
                             </div>
-                        </div>
-                        <div class="fuel-result">
+                        </div>                        <div class="fuel-result">
                             <span class="result-label">Litros</span>
                             <span class="result-value" id="litros-gasolina">-- L</span>
-                            <span class="result-label" style="margin-top: 8px;">Custo Total</span>
+                            <span class="result-label trajeto-cost">Custo Total</span>
                             <span class="result-value" id="custo-trajeto-gasolina">R$ --</span>
                         </div>
                     </div>
@@ -228,11 +225,10 @@
                                 <label>Preço (R$/L)</label>
                                 <input type="number" id="preco-trajeto-etanol" placeholder="4.00" step="0.01" min="0">
                             </div>
-                        </div>
-                        <div class="fuel-result">
+                        </div>                        <div class="fuel-result">
                             <span class="result-label">Litros</span>
                             <span class="result-value" id="litros-etanol">-- L</span>
-                            <span class="result-label" style="margin-top: 8px;">Custo Total</span>
+                            <span class="result-label trajeto-cost">Custo Total</span>
                             <span class="result-value" id="custo-trajeto-etanol">R$ --</span>
                         </div>
                     </div>
@@ -252,11 +248,10 @@
                                 <label>Preço (R$/L)</label>
                                 <input type="number" id="preco-trajeto-diesel" placeholder="5.20" step="0.01" min="0">
                             </div>
-                        </div>
-                        <div class="fuel-result">
+                        </div>                        <div class="fuel-result">
                             <span class="result-label">Litros</span>
                             <span class="result-value" id="litros-diesel">-- L</span>
-                            <span class="result-label" style="margin-top: 8px;">Custo Total</span>
+                            <span class="result-label trajeto-cost">Custo Total</span>
                             <span class="result-value" id="custo-trajeto-diesel">R$ --</span>
                         </div>
                     </div>
@@ -276,11 +271,10 @@
                                 <label>Preço (R$/m³)</label>
                                 <input type="number" id="preco-trajeto-gnv" placeholder="3.50" step="0.01" min="0">
                             </div>
-                        </div>
-                        <div class="fuel-result">
+                        </div>                        <div class="fuel-result">
                             <span class="result-label">m³</span>
                             <span class="result-value" id="litros-gnv">-- m³</span>
-                            <span class="result-label" style="margin-top: 8px;">Custo Total</span>
+                            <span class="result-label trajeto-cost">Custo Total</span>
                             <span class="result-value" id="custo-trajeto-gnv">R$ --</span>
                         </div>
                     </div>
@@ -357,28 +351,10 @@
                         <div id="resultado-economia" class="resultado-vazio">
                             <p>Preencha os dados para ver a economia</p>
                         </div>
-                    </div>
-                </div>
+                    </div>                </div>
             </section>
 
-            <!-- ABA 4: HISTÓRICO -->
-            <section class="tab-pane" id="historico">
-                <div class="section-header">
-                    <h2>Histórico</h2>
-                    <p>Seus últimos cálculos</p>
-                </div>
-
-                <div class="history-controls">
-                    <button class="btn btn-small" onclick="exportarHistorico()">📥 Exportar</button>
-                    <button class="btn btn-small btn-danger" onclick="limparHistorico()">🗑️ Limpar</button>
-                </div>
-
-                <div id="lista-historico" class="history-list">
-                    <p class="empty-state">Nenhum cálculo salvo ainda</p>
-                </div>
-            </section>
-
-            <!-- ABA 5: CONFIGURAÇÕES -->
+            <!-- ABA 4: CONFIGURAÇÕES -->
             <section class="tab-pane" id="configuracoes">
                 <div class="section-header">
                     <h2>Configurações</h2>
@@ -398,6 +374,19 @@
                             <span class="theme-slider"></span>
                         </label>
                         <span class="theme-label">🌙 Escuro</span>
+                    </div>
+                </div>
+
+                <!-- CAPACIDADE DO TANQUE -->
+                <div class="settings-card">
+                    <div class="settings-header">
+                        <span class="settings-icon">🛢️</span>
+                        <h3>Capacidade do Tanque</h3>
+                    </div>
+                    <p class="settings-description">Informe a capacidade do tanque do seu veículo:</p>
+                    <div class="input-group">
+                        <label>Litros</label>
+                        <input type="number" id="capacidade-tanque" placeholder="50" step="1" min="0" oninput="sincronizarDados()">
                     </div>
                 </div>
 
@@ -428,24 +417,9 @@
                             <input type="checkbox" id="fuel-gnv" value="gnv" checked>
                             <span class="fuel-check-icon">⚪</span>
                             <span class="fuel-check-label">GNV</span>
-                        </label>
-                    </div>
-                    <button class="btn btn-primary btn-block" onclick="salvarCombustiveisSelecionados()" style="margin-top: 16px;">
-                        💾 Salvar Combustíveis
-                    </button>
-                </div>
-
-                <!-- PWA - INSTALAR APP -->
-                <div class="settings-card" id="pwa-install-card">
-                    <div class="settings-header">
-                        <span class="settings-icon">📱</span>
-                        <h3>Instalar Aplicativo</h3>
-                    </div>
-                    <p class="settings-description">Adicione o Fuel Calc à tela inicial do seu celular para acesso rápido:</p>
-                    <button class="btn btn-primary btn-block" id="install-btn" onclick="instalarApp()">
-                        📲 Adicionar à Tela Inicial
-                    </button>
-                    <p class="install-status" id="install-status"></p>
+                        </label>                    </div>
+                    <button class="btn btn-primary btn-block settings-save-btn" onclick="salvarCombustiveisSelecionados()">
+                        💾 Salvar Combustíveis                    </button>
                 </div>
 
                 <!-- INFO -->
@@ -454,11 +428,10 @@
                         <span class="settings-icon">ℹ️</span>
                         <h3>Sobre</h3>
                     </div>
-                    <div class="about-info">
-                        <p><strong>⛽ Fuel Calc</strong></p>
+                    <div class="about-info">                        <p><strong>⛽ Fuel Calc</strong></p>
                         <p>Versão 1.0</p>
                         <p>Calcule e economize no combustível do seu veículo</p>
-                        <p style="margin-top: 12px; font-size: 12px; color: var(--gray);">
+                        <p class="about-info-text">
                             © 2026 Fuel Calc
                         </p>
                     </div>

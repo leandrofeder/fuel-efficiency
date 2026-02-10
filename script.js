@@ -110,40 +110,64 @@ function initTheme() {
     const themeToggle = document.getElementById('theme-toggle');
     const themeColorMeta = document.getElementById('theme-color');
 
-    if (!themeToggle) return;
+    if (!themeToggle) {
+        console.error('Theme toggle not found!');
+        return;
+    }
 
     // Carregar tema salvo
     const temaSalvo = carregarDoLocalStorage(CACHE.TEMA);
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const isDark = temaSalvo === 'dark' || (!temaSalvo && prefersDark);
 
-    // Aplicar tema inicial
+    console.log('Tema salvo:', temaSalvo, 'isDark:', isDark);
+
+    // Aplicar tema inicial - remover qualquer classe existente primeiro
+    document.body.classList.remove('light-theme', 'dark-theme');
+    
     if (isDark) {
         document.body.classList.add('dark-theme');
+        document.body.setAttribute('data-theme', 'dark');
         themeToggle.checked = true;
         if (themeColorMeta) themeColorMeta.content = '#2d2d44';
+        console.log('Tema dark aplicado na inicialização');
     } else {
         document.body.classList.add('light-theme');
+        document.body.removeAttribute('data-theme');
         if (themeColorMeta) themeColorMeta.content = '#667eea';
+        console.log('Tema claro aplicado na inicialização');
     }
 
     // Listener para toggle
     themeToggle.addEventListener('change', () => {
         const isDarkMode = themeToggle.checked;
+        
+        console.log('Toggle mudou para:', isDarkMode ? 'dark' : 'light');
 
+        // Sempre remover ambas as classes primeiro
+        document.body.classList.remove('light-theme', 'dark-theme');
         if (isDarkMode) {
-            document.body.classList.remove('light-theme');
             document.body.classList.add('dark-theme');
+            document.body.setAttribute('data-theme', 'dark');
             salvarNoLocalStorage(CACHE.TEMA, 'dark');
             if (themeColorMeta) themeColorMeta.content = '#2d2d44';
+            console.log('Tema dark ativado, classes do body:', document.body.className);
+            console.log('Background do body:', window.getComputedStyle(document.body).background);
             showToast('🌙 Tema escuro ativado');
         } else {
-            document.body.classList.remove('dark-theme');
             document.body.classList.add('light-theme');
+            document.body.removeAttribute('data-theme');
             salvarNoLocalStorage(CACHE.TEMA, 'light');
             if (themeColorMeta) themeColorMeta.content = '#667eea';
+            console.log('Tema claro ativado, classes do body:', document.body.className);
+            console.log('Background do body:', window.getComputedStyle(document.body).background);
             showToast('☀️ Tema claro ativado');
         }
+        
+        // Forçar re-render
+        document.body.style.display = 'none';
+        document.body.offsetHeight; // trigger reflow
+        document.body.style.display = '';
     });
 }
 
@@ -226,6 +250,58 @@ function ajustarGridCombustiveis(quantidade) {
 
 
 // ==================== UTILITÁRIOS ==================== 
+
+// Sincronizar dados entre telas
+function sincronizarDados() {
+    const combustiveis = ['gasolina', 'etanol', 'diesel', 'gnv'];
+    const capacidadeTanque = parseFloat(document.getElementById('capacidade-tanque')?.value) || 0;
+    
+    combustiveis.forEach(fuel => {
+        // Obter valores do comparador
+        const precoComparador = document.getElementById(`preco-${fuel}`)?.value;
+        const consumoComparador = document.getElementById(`consumo-${fuel}`)?.value;
+        
+        // Sincronizar para trajeto
+        const precoTrajeto = document.getElementById(`preco-trajeto-${fuel}`);
+        const consumoTrajeto = document.getElementById(`consumo-trajeto-${fuel}`);
+        if (precoComparador && precoTrajeto && !precoTrajeto.value) {
+            precoTrajeto.value = precoComparador;
+        }
+        if (consumoComparador && consumoTrajeto && !consumoTrajeto.value) {
+            consumoTrajeto.value = consumoComparador;
+        }
+        
+        // Sincronizar para economia
+        const precoEconomia = document.getElementById(`economia-preco-${fuel}`);
+        const consumoEconomia = document.getElementById(`economia-consumo-${fuel}`);
+        if (precoComparador && precoEconomia && !precoEconomia.value) {
+            precoEconomia.value = precoComparador;
+        }
+        if (consumoComparador && consumoEconomia && !consumoEconomia.value) {
+            consumoEconomia.value = consumoComparador;
+        }
+        
+        // Calcular custo para encher o tanque
+        if (capacidadeTanque > 0 && precoComparador) {
+            const custoTanque = capacidadeTanque * parseFloat(precoComparador);
+            const elementoTanque = document.getElementById(`tanque-${fuel}`);
+            if (elementoTanque) {
+                elementoTanque.textContent = formatCurrency(custoTanque);
+            }
+        } else {
+            const elementoTanque = document.getElementById(`tanque-${fuel}`);
+            if (elementoTanque) {
+                elementoTanque.textContent = 'R$ --';
+            }
+        }
+    });
+    
+    // Salvar capacidade do tanque
+    if (capacidadeTanque > 0) {
+        salvarNoLocalStorage('capacidade_tanque', capacidadeTanque);
+    }
+}
+
 function showToast(msg, duration = 3000) {
     const toast = document.getElementById('toast');
     toast.textContent = msg;
@@ -263,6 +339,12 @@ function carregarDoLocalStorage(chave) {
 }
 
 function restaurarCampos() {
+    // Restaurar capacidade do tanque
+    const capacidadeTanque = carregarDoLocalStorage('capacidade_tanque');
+    if (capacidadeTanque && document.getElementById('capacidade-tanque')) {
+        document.getElementById('capacidade-tanque').value = capacidadeTanque;
+    }
+    
     // Restaurar comparador
     const dadosComparador = carregarDoLocalStorage(CACHE.COMPARADOR);
     if (dadosComparador) {
@@ -350,15 +432,31 @@ function compararCombustiveis() {
 
         html = `
             <div class="melhor-opcao">
-                ✓ MELHOR: ${melhor.nome}
+                <div class="melhor-opcao-icon">🏆</div>
+                <div class="melhor-opcao-text">
+                    <div class="melhor-opcao-titulo">MELHOR OPÇÃO</div>
+                    <div class="melhor-opcao-nome">${melhor.nome}</div>
+                </div>
             </div>
-            <p><strong>Custo/km:</strong> ${formatCurrency(melhor.custo)}</p>
-            <p><strong>Preço/L:</strong> ${formatCurrency(melhor.preco)}</p>
-            <p><strong>Consumo:</strong> ${formatNumber(melhor.consumo, 1)} km/L</p>
+            <div class="resultado-detalhes">
+                <div class="resultado-item">
+                    <span class="resultado-label">💸 Custo por km:</span>
+                    <span class="resultado-valor">${formatCurrency(melhor.custo)}</span>
+                </div>
+                <div class="resultado-item">
+                    <span class="resultado-label">💵 Preço/Litro:</span>
+                    <span class="resultado-valor">${formatCurrency(melhor.preco)}</span>
+                </div>
+                <div class="resultado-item">
+                    <span class="resultado-label">📊 Consumo:</span>
+                    <span class="resultado-valor">${formatNumber(melhor.consumo, 1)} km/L</span>
+                </div>
+            </div>
             ${validos.length > 1 ? `
-                <p style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #e0e0e0;">
-                    <strong>Economia:</strong> ${economia}% vs ${pior.nome} (${formatCurrency(pior.custo - melhor.custo)}/km)
-                </p>
+                <div class="economia-badge">
+                    💰 Economiza ${economia}% vs ${pior.nome}<br>
+                    <small>(${formatCurrency(pior.custo - melhor.custo)} por km)</small>
+                </div>
             ` : ''}
         `;
     } else {
@@ -369,6 +467,10 @@ function compararCombustiveis() {
 
     // Salvar cache
     salvarNoLocalStorage(CACHE.COMPARADOR, combustiveis);
+    
+    // Sincronizar dados
+    sincronizarDados();
+    
     showToast('✓ Comparação calculada');
 }
 
@@ -466,11 +568,9 @@ function salvarCalculoTrajeto() {
         custo: melhor[1],
         data: new Date().toLocaleDateString('pt-BR'),
         hora: new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })
-    });
-
-    salvarNoLocalStorage(CACHE.HISTORICO, historico);
-    carregarHistorico();
-    showToast('💾 Cálculo salvo no histórico!');
+    });    salvarNoLocalStorage(CACHE.HISTORICO, historico);
+    // carregarHistorico(); // Removido - histórico foi desabilitado
+    // showToast('💾 Cálculo salvo no histórico!'); // Removido
 }
 
 // ==================== ECONOMIA ==================== 
@@ -544,6 +644,11 @@ function carregarHistorico() {
     const historico = carregarDoLocalStorage(CACHE.HISTORICO) || [];
     const lista = document.getElementById('lista-historico');
 
+    // Se o elemento não existir (histórico foi removido), retornar
+    if (!lista) {
+        return;
+    }
+
     if (historico.length === 0) {
         lista.innerHTML = '<p class="empty-state">Nenhum cálculo salvo ainda</p>';
         return;
@@ -567,14 +672,14 @@ function deletarDoHistorico(id) {
     const historico = carregarDoLocalStorage(CACHE.HISTORICO) || [];
     const novo = historico.filter(h => h.id !== id);
     salvarNoLocalStorage(CACHE.HISTORICO, novo);
-    carregarHistorico();
+    // carregarHistorico(); // Removido - histórico foi desabilitado
     showToast('Deletado do histórico');
 }
 
 function limparHistorico() {
     if (confirm('Tem certeza? Seus cálculos serão apagados.')) {
         localStorage.removeItem(CACHE.HISTORICO);
-        carregarHistorico();
+        // carregarHistorico(); // Removido - histórico foi desabilitado
         showToast('Histórico limpo');
     }
 }
@@ -629,7 +734,7 @@ document.getElementById('ida-volta')?.addEventListener('change', atualizarDistan
 // Restaurar ao carregar
 document.addEventListener('DOMContentLoaded', () => {
     restaurarCampos();
-    carregarHistorico();
+    // carregarHistorico(); // Removido - histórico foi desabilitado
     atualizarDistancia();
     initTheme();
     initCombustiveis();
